@@ -1,0 +1,645 @@
+Variable,Clinic Table Section,Age,Variable Description,Max Length*
+OrderID,,,Alphabetical order,3
+CurrentClinicName1,,,First line current clinic name,100
+CurrentClinicName2,,,Second line current clinic name,100
+CurrentClinicCity,,,Current clinic city,50
+CurrentClinicState,,,Current clinic state,50
+MedicalDirector,,,Name of director verifying data,100
+ND_NumIntentRet1,"Nondonor eggs, All patients",<35,Number of intended retrievals,7
+ND_NumIntentRet2,"Nondonor eggs, All patients",35-37,Number of intended retrievals,7
+ND_NumIntentRet3,"Nondonor eggs, All patients",38-40,Number of intended retrievals,7
+ND_NumIntentRet4,"Nondonor eggs, All patients",41-42,Number of intended retrievals,7
+ND_NumIntentRet5,"Nondonor eggs, All patients",≥43,Number of intended retrievals,7
+ND_IntentRetLB1,"Nondonor eggs, All patients",<35,Pct intended retrievals resulting in live births,7
+ND_IntentRetLB2,"Nondonor eggs, All patients",35-37,Pct intended retrievals resulting in live births,7
+ND_IntentRetLB3,"Nondonor eggs, All patients",38-40,Pct intended retrievals resulting in live births,7
+ND_IntentRetLB4,"Nondonor eggs, All patients",41-42,Pct intended retrievals resulting in live births,7
+ND_IntentRetLB5,"Nondonor eggs, All patients",≥43,Pct intended retrievals resulting in live births,7
+ND_IntentRetSingleLB1,"Nondonor eggs, All patients",<35,Pct intended retrievals resulting in singleton live births,7
+ND_IntentRetSingleLB2,"Nondonor eggs, All patients",35-37,Pct intended retrievals resulting in singleton live births,7
+ND_IntentRetSingleLB3,"Nondonor eggs, All patients",38-40,Pct intended retrievals resulting in singleton live births,7
+ND_IntentRetSingleLB4,"Nondonor eggs, All patients",41-42,Pct intended retrievals resulting in singleton live births,7
+ND_IntentRetSingleLB5,"Nondonor eggs, All patients",≥43,Pct intended retrievals resulting in singleton live births,7
+ND_NumRetrieve1,"Nondonor eggs, All patients",<35,Number of retrievals,7
+ND_NumRetrieve2,"Nondonor eggs, All patients",35-37,Number of retrievals,7
+ND_NumRetrieve3,"Nondonor eggs, All patients",38-40,Number of retrievals,7
+ND_NumRetrieve4,"Nondonor eggs, All patients",41-42,Number of retrievals,7
+ND_NumRetrieve5,"Nondonor eggs, All patients",≥43,Number of retrievals,7
+ND_RetrieveLB1,"Nondonor eggs, All patients",<35,Pct retrievals resulting in live births,7
+ND_RetrieveLB2,"Nondonor eggs, All patients",35-37,Pct retrievals resulting in live births,7
+ND_RetrieveLB3,"Nondonor eggs, All patients",38-40,Pct retrievals resulting in live births,7
+ND_RetrieveLB4,"Nondonor eggs, All patients",41-42,Pct retrievals resulting in live births,7
+ND_RetrieveLB5,"Nondonor eggs, All patients",≥43,Pct retrievals resulting in live births,7
+ND_RetrieveSingleLB1,"Nondonor eggs, All patients",<35,Pct retrievals resulting in singleton live births,7
+ND_RetrieveSingleLB2,"Nondonor eggs, All patients",35-37,Pct retrievals resulting in singleton live births,7
+ND_RetrieveSingleLB3,"Nondonor eggs, All patients",38-40,Pct retrievals resulting in singleton live births,7
+ND_RetrieveSingleLB4,"Nondonor eggs, All patients",41-42,Pct retrievals resulting in singleton live births,7
+ND_RetrieveSingleLB5,"Nondonor eggs, All patients",≥43,Pct retrievals resulting in singleton live births,7
+ND_NumTrans1,"Nondonor eggs, All patients",<35,Number of transfers,7
+ND_NumTrans2,"Nondonor eggs, All patients",35-37,Number of transfers,7
+ND_NumTrans3,"Nondonor eggs, All patients",38-40,Number of transfers,7
+ND_NumTrans4,"Nondonor eggs, All patients",41-42,Number of transfers,7
+ND_NumTrans5,"Nondonor eggs, All patients",≥43,Number of transfers,7
+ND_TransLB1,"Nondonor eggs, All patients",<35,Pct transfers resulting in live births,7
+ND_TransLB2,"Nondonor eggs, All patients",35-37,Pct transfers resulting in live births,7
+ND_TransLB3,"Nondonor eggs, All patients",38-40,Pct transfers resulting in live births,7
+ND_TransLB4,"Nondonor eggs, All patients",41-42,Pct transfers resulting in live births,7
+ND_TransLB5,"Nondonor eggs, All patients",≥43,Pct transfers resulting in live births,7
+ND_TransSingleLB1,"Nondonor eggs, All patients",<35,Pct transfers resulting in singleton live births,7
+ND_TransSingleLB2,"Nondonor eggs, All patients",35-37,Pct transfers resulting in singleton live births,7
+ND_TransSingleLB3,"Nondonor eggs, All patients",38-40,Pct transfers resulting in singleton live births,7
+ND_TransSingleLB4,"Nondonor eggs, All patients",41-42,Pct transfers resulting in singleton live births,7
+ND_TransSingleLB5,"Nondonor eggs, All patients",≥43,Pct transfers resulting in singleton live births,7
+ND_IntentRetPerLB1,"Nondonor eggs, All patients",<35,Number of intended retrievals per live birth,7
+ND_IntentRetPerLB2,"Nondonor eggs, All patients",35-37,Number of intended retrievals per live birth,7
+ND_IntentRetPerLB3,"Nondonor eggs, All patients",38-40,Number of intended retrievals per live birth,7
+ND_IntentRetPerLB4,"Nondonor eggs, All patients",41-42,Number of intended retrievals per live birth,7
+ND_IntentRetPerLB5,"Nondonor eggs, All patients",≥43,Number of intended retrievals per live birth,7
+NewND_1IntentRetLB1,"Nondonor eggs, New patients",<35,Pct new patients with LB after 1 intended retrieval,7
+NewND_1IntentRetLB2,"Nondonor eggs, New patients",35-37,Pct new patients with LB after 1 intended retrieval,7
+NewND_1IntentRetLB3,"Nondonor eggs, New patients",38-40,Pct new patients with LB after 1 intended retrieval,7
+NewND_1IntentRetLB4,"Nondonor eggs, New patients",41-42,Pct new patients with LB after 1 intended retrieval,7
+NewND_1IntentRetLB5,"Nondonor eggs, New patients",≥43,Pct new patients with LB after 1 intended retrieval,7
+NewND_2IntentRetLB1,"Nondonor eggs, New patients",<35,Pct new patients with LB after 1 or 2 intended retrievals,7
+NewND_2IntentRetLB2,"Nondonor eggs, New patients",35-37,Pct new patients with LB after 1 or 2 intended retrievals,7
+NewND_2IntentRetLB3,"Nondonor eggs, New patients",38-40,Pct new patients with LB after 1 or 2 intended retrievals,7
+NewND_2IntentRetLB4,"Nondonor eggs, New patients",41-42,Pct new patients with LB after 1 or 2 intended retrievals,7
+NewND_2IntentRetLB5,"Nondonor eggs, New patients",≥43,Pct new patients with LB after 1 or 2 intended retrievals,7
+NewND_AllIntentRetLB1,"Nondonor eggs, New patients",<35,Pct new patients with LB after all intended retrievals,7
+NewND_AllIntentRetLB2,"Nondonor eggs, New patients",35-37,Pct new patients with LB after all intended retrievals,7
+NewND_AllIntentRetLB3,"Nondonor eggs, New patients",38-40,Pct new patients with LB after all intended retrievals,7
+NewND_AllIntentRetLB4,"Nondonor eggs, New patients",41-42,Pct new patients with LB after all intended retrievals,7
+NewND_AllIntentRetLB5,"Nondonor eggs, New patients",≥43,Pct new patients with LB after all intended retrievals,7
+NewND_IntentRetPerNew1,"Nondonor eggs, New patients",<35,Average number of intended retrievals per new patient,7
+NewND_IntentRetPerNew2,"Nondonor eggs, New patients",35-37,Average number of intended retrievals per new patient,7
+NewND_IntentRetPerNew3,"Nondonor eggs, New patients",38-40,Average number of intended retrievals per new patient,7
+NewND_IntentRetPerNew4,"Nondonor eggs, New patients",41-42,Average number of intended retrievals per new patient,7
+NewND_IntentRetPerNew5,"Nondonor eggs, New patients",≥43,Average number of intended retrievals per new patient,7
+NewND_TransPerIntentRet1,"Nondonor eggs, New patients",<35,Average number of transfers per intended retrieval,7
+NewND_TransPerIntentRet2,"Nondonor eggs, New patients",35-37,Average number of transfers per intended retrieval,7
+NewND_TransPerIntentRet3,"Nondonor eggs, New patients",38-40,Average number of transfers per intended retrieval,7
+NewND_TransPerIntentRet4,"Nondonor eggs, New patients",41-42,Average number of transfers per intended retrieval,7
+NewND_TransPerIntentRet5,"Nondonor eggs, New patients",≥43,Average number of transfers per intended retrieval,7
+Donor_NumTrans1,"Donor, Fresh emb, Fresh egg",,Number of transfers,7
+Donor_NumTrans2,"Donor, Fresh emb, Frozen egg",,Number of transfers,7
+Donor_NumTrans3,"Donor, Frozen embryo",,Number of transfers,7
+Donor_NumTrans4,Donated embryo ,,Number of transfers,7
+Donor_TransLB1,"Donor, Fresh emb, Fresh egg",,Pct transfers resulting in live births,7
+Donor_TransLB2,"Donor, Fresh emb, Frozen egg",,Pct transfers resulting in live births,7
+Donor_TransLB3,"Donor, Frozen embryo",,Pct transfers resulting in live births,7
+Donor_TransLB4,Donated embryo ,,Pct transfers resulting in live births,7
+Donor_TranSingleLB1,"Donor, Fresh emb, Fresh egg",,Pct transfers resulting in singleton live births,7
+Donor_TranSingleLB2,"Donor, Fresh emb, Frozen egg",,Pct transfers resulting in singleton live births,7
+Donor_TranSingleLB3,"Donor, Frozen embryo",,Pct transfers resulting in singleton live births,7
+Donor_TranSingleLB4,Donated embryo ,,Pct transfers resulting in singleton live births,7
+TotNumCycles1,Cycle characteristics,<35,Total number of cycles,7
+TotNumCycles2,Cycle characteristics,35-37,Total number of cycles,7
+TotNumCycles3,Cycle characteristics,38-40,Total number of cycles,7
+TotNumCycles4,Cycle characteristics,41-42,Total number of cycles,7
+TotNumCycles5,Cycle characteristics,≥43,Total number of cycles,7
+TotNumCyclesAll,Cycle characteristics,All,Total number of cycles,7
+CycleCancel1,Cycle characteristics,<35,Pct cycles canceled prior to retrieval or thaw,7
+CycleCancel2,Cycle characteristics,35-37,Pct cycles canceled prior to retrieval or thaw,7
+CycleCancel3,Cycle characteristics,38-40,Pct cycles canceled prior to retrieval or thaw,7
+CycleCancel4,Cycle characteristics,41-42,Pct cycles canceled prior to retrieval or thaw,7
+CycleCancel5,Cycle characteristics,≥43,Pct cycles canceled prior to retrieval or thaw,7
+CycleCancelAll,Cycle characteristics,All,Pct cycles canceled prior to retrieval or thaw,7
+CycleStop1,Cycle characteristics,<35,Pct cycles stopped btwn retrieval and transfer or banking,7
+CycleStop2,Cycle characteristics,35-37,Pct cycles stopped btwn retrieval and transfer or banking,7
+CycleStop3,Cycle characteristics,38-40,Pct cycles stopped btwn retrieval and transfer or banking,7
+CycleStop4,Cycle characteristics,41-42,Pct cycles stopped btwn retrieval and transfer or banking,7
+CycleStop5,Cycle characteristics,≥43,Pct cycles stopped btwn retrieval and transfer or banking,7
+CycleStopAll,Cycle characteristics,All,Pct cycles stopped btwn retrieval and transfer or banking,7
+CycleFertPres1,Cycle characteristics,<35,Pct cycles for fertility preservation,7
+CycleFertPres2,Cycle characteristics,35-37,Pct cycles for fertility preservation,7
+CycleFertPres3,Cycle characteristics,38-40,Pct cycles for fertility preservation,7
+CycleFertPres4,Cycle characteristics,41-42,Pct cycles for fertility preservation,7
+CycleFertPres5,Cycle characteristics,≥43,Pct cycles for fertility preservation,7
+CycleFertPresAll,Cycle characteristics,All,Pct cycles for fertility preservation,7
+TransCarrier1,Cycle characteristics,<35,Pct transfers using gestational carrier,7
+TransCarrier2,Cycle characteristics,35-37,Pct transfers using gestational carrier,7
+TransCarrier3,Cycle characteristics,38-40,Pct transfers using gestational carrier,7
+TransCarrier4,Cycle characteristics,41-42,Pct transfers using gestational carrier,7
+TransCarrier5,Cycle characteristics,≥43,Pct transfers using gestational carrier,7
+TransCarrierAll,Cycle characteristics,All,Pct transfers using gestational carrier,7
+TransFrozEmb1,Cycle characteristics,<35,Pct transfers using frozen embryos,7
+TransFrozEmb2,Cycle characteristics,35-37,Pct transfers using frozen embryos,7
+TransFrozEmb3,Cycle characteristics,38-40,Pct transfers using frozen embryos,7
+TransFrozEmb4,Cycle characteristics,41-42,Pct transfers using frozen embryos,7
+TransFrozEmb5,Cycle characteristics,≥43,Pct transfers using frozen embryos,7
+TransFrozEmbAll,Cycle characteristics,All,Pct transfers using frozen embryos,7
+TransICSI1,Cycle characteristics,<35,Pct transfers of at least one embryo with ICSI,7
+TransICSI2,Cycle characteristics,35-37,Pct transfers of at least one embryo with ICSI,7
+TransICSI3,Cycle characteristics,38-40,Pct transfers of at least one embryo with ICSI,7
+TransICSI4,Cycle characteristics,41-42,Pct transfers of at least one embryo with ICSI,7
+TransICSI5,Cycle characteristics,≥43,Pct transfers of at least one embryo with ICSI,7
+TransICSIAll,Cycle characteristics,All,Pct transfers of at least one embryo with ICSI,7
+TransPGT1,Cycle characteristics,<35,Pct transfers of at least one embryo with PGT,7
+TransPGT2,Cycle characteristics,35-37,Pct transfers of at least one embryo with PGT,7
+TransPGT3,Cycle characteristics,38-40,Pct transfers of at least one embryo with PGT,7
+TransPGT4,Cycle characteristics,41-42,Pct transfers of at least one embryo with PGT,7
+TransPGT5,Cycle characteristics,≥43,Pct transfers of at least one embryo with PGT,7
+TransPGTAll,Cycle characteristics,All,Pct transfers of at least one embryo with PGT,7
+ReasonMale,Reason for ART,,Pct cycles for male factor reason,4
+ReasonEndo,Reason for ART,,Pct cycles for endometriosis reason,4
+ReasonTubal,Reason for ART,,Pct cycles for tubal factor reason,4
+ReasonOvul,Reason for ART,,Pct cycles for ovulatory dysfunction reason,4
+ReasonUterine,Reason for ART,,Pct cycles for uterine factor reason,4
+ReasonPGT,Reason for ART,,Pct cycles for PGT reason,4
+ReasonCarrier,Reason for ART,,Pct cycles for gestational carrier reason,4
+ReasonDOR,Reason for ART,,Pct cycles for DOR reason,4
+ReasonBank,Reason for ART,,Pct cycles for banking reason,4
+ReasonPregLoss,Reason for ART,,Pct cycles for recurrent pregnancy loss reason,4
+ReasonOtherInfert,Reason for ART,,Pct cycles for other infertility reason,4
+ReasonNonInfert,Reason for ART,,Pct cycles for other non-infertility reason,4
+ReasonUnexplained,Reason for ART,,Pct cycles for unexplained reason,4
+DonorEggService,Services and profile,,Whether clinic has donor egg program,3
+DonatedEmbryoService,Services and profile,,Whether clinic has donated embryo program,3
+EmbryoCryoService,Services and profile,,Whether clinic has embryo cryopreservation program,3
+EggCryoService,Services and profile,,Whether clinic has egg cryopreservation program,3
+SingleWomenService,Services and profile,,Clinic services for single women,3
+GestCarrierService,Services and profile,,Clinic services for using gestational carriers,3
+SARTmember,Services and profile,,Whether clinic is SART member,3
+LabAccred,Services and profile,,Embryo laboratory accreditation status,9
+NumResearch,Footnote,,Number of excluded research cycles,7
+CurrentStateAbbrev,,,Current state postal code,2
+"*Data type for calculated variables is text to allow characters, such as for fractions, percentages, commas, and comparisons (< or >).",,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
