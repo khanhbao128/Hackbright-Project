@@ -1,10 +1,8 @@
 """Utility file to seed data from data table to database"""
 
 from sqlalchemy import func
-from model import Clinic
-# from model import City
-# from model import State
-# from model import AgeRange
+from model import Clinic, Rate, ClinicRate
+
 
 from model import connect_to_db, db
 from server import app
@@ -19,9 +17,12 @@ def load_file(filename):
 
     with open('statics/2016 data.csv') as csvfile:
         spamreader = csv.reader(csvfile, quotechar='"', delimiter=",")
+        
         for row in spamreader:
             rows.append(row)
-        return rows
+    return rows
+
+
 
 
 
@@ -32,23 +33,16 @@ def load_clinics(file_rows):
 
     # Delete all rows in table, so if we need to run this a second time,
     # we won't be trying to add duplicate users
-    Clinic.query.delete()
+    # Clinic.query.delete()
 
     # Read file_rows and insert data
     for row in file_rows[1:]:
          # unpack part of each row
         clinic_id, clinic_name, city, state, director = row[:5]
 
-        # seeding data to database
-        # clinic = Clinic(clinic_id=clinic_id,
-                        # clinic_name=clinic_name,
-                        # city=city,
-                        # state=state,
-                        # director=director)
 
         clinic = Clinic(clinic_id=clinic_id, clinic_name=clinic_name, city=city, state=state, director=director)
         
-        # print(clinic_id, clinic_name, city, state, director)
         # add to the session or it won't ever be stored
         db.session.add(clinic)
 
@@ -61,32 +55,31 @@ def load_rates(file_rows):
 
     print("Rates")
 
+    # Delete all rows in table, so if we need to run this a second time,
+    # we won't be trying to add duplicate users
     Rate.query.delete()
 
-    for row in file_rows[1:]:
-        if is_fresh_emb_bool == True:
-            if is_single_bool == False:
-                rate_group_1, rate_group_2, rate_group_3, rate_group_4, rate_group_5 = row[5:11]
-            else:
-                rate_group_1, rate_group_2, rate_group_3, rate_group_4, rate_group_5 = row[11:16]
+    for row in file_rows:
+        fresh_mul_1, fresh_mul_2, fresh_mul_3, fresh_mul_4, fresh_mul_5, fresh_mul_1, fresh_mul_2, fresh_mul_3, fresh_mul_4, fresh_mul_5 = row[5: 15] 
+        fro_mul_1, fro_mul_2, fro_mul_3, fro_mul_4, fro_mul_5, fro_sin_1, fro_sin_2, fro_sin_3, fro_sin_4, fro_sin_5 = row[15:25]  
 
-        else:
-            if is_single_bool == False:
-                rate_group_1, rate_group_2, rate_group_3, rate_group_4, rate_group_5 = row[16:21]
-            else:
-                rate_group_1, rate_group_2, rate_group_3, rate_group_4, rate_group_5 = row[21:26]
-
-        rate = Rate(rate_group_1=rate_group_1, rate_group_2=rate_group_2, rate_group_3=rate_group_3, rate_group_4=rate_group_4, rate_group_5=rate_group_5)
-
+        rate = Rate(fresh_mul_1=fresh_mul_1, fresh_mul_2=fresh_mul_2, fresh_mul_3=fresh_mul_3, fresh_mul_4=fresh_mul_4, fresh_mul_5=fresh_mul_5,
+                    fresh_sin_1=fresh_sin_1, fresh_sin_2=fresh_sin_2, fresh_sin_3=fresh_sin_3, fresh_sin_4=fresh_sin_4, fresh_sin_5=fresh_sin_5, 
+                    fro_mul_1=fro_mul_1, fro_mul_2=fro_mul_2, fro_mul_3=fro_mul_3, fro_mul_4=fro_mul_4, fro_mul_5=fro_mul_5,
+                    fro_sin_1=fro_sin_1, fro_sin_2=fro_sin_2, fro_sin_3=fro_sin_3, fro_sin_4=fro_sin_4, fro_sin_5=fro_sin_5)
+                     
         # add to the session
         db.session.add(rate)
 
     db.session.commit()
 
+def load_clinic_rates():
 
+    clinic_rate = ClinicRate(clinic_rate_id=clinic_rate_id, clinic_rate=clinic_rate, rate_id=rate_id)
 
+    db.session.add(clinic_rate)
 
-
+    db.session.commit()
 
 
 
@@ -101,9 +94,9 @@ if __name__ == "__main__":
 
     rows = load_file(filename)
     load_clinics(rows)
-    load_rates(rows)   
+    load_rates(rows)  
+    load_clinic_rates() 
 
-    # directors = load_director(rows)
 
 
 
