@@ -37,28 +37,53 @@ class Rate(db.Model):
     __tablename__ = "rates"
 
     rate_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    is_single_bool = db.Column(db.Boolean)
-    is_fresh_emb = db.Column(db.Boolean)
-    rate_group_1 = db.Column(db.Float, nullable=True)
-    rate_group_2 = db.Column(db.Float, nullable=True)
-    rate_group_3 = db.Column(db.Float, nullable=True)
-    rate_group_4 = db.Column(db.Float, nullable=True)
-    rate_group_5 = db.Column(db.Float, nullable=True)
+    
+    fresh_mul_1 = db.Column(db.Float, nullable=True)
+    fresh_mul_2 = db.Column(db.Float, nullable=True)
+    fresh_mul_3 = db.Column(db.Float, nullable=True)
+    fresh_mul_4 = db.Column(db.Float, nullable=True)
+    fresh_mul_5 = db.Column(db.Float, nullable=True)
+
+    fresh_sin_1 = db.Column(db.Float, nullable=True)
+    fresh_sin_2 = db.Column(db.Float, nullable=True)
+    fresh_sin_3 = db.Column(db.Float, nullable=True)
+    fresh_sin_4 = db.Column(db.Float, nullable=True)
+    fresh_sin_5 = db.Column(db.Float, nullable=True)
+
+    fro_mul_1 = db.Column(db.Float, nullable=True)
+    fro_mul_2 = db.Column(db.Float, nullable=True)
+    fro_mul_3 = db.Column(db.Float, nullable=True)
+    fro_mul_4 = db.Column(db.Float, nullable=True)
+    fro_mul_5 = db.Column(db.Float, nullable=True)
+
+    fro_sin_1 = db.Column(db.Float, nullable=True)
+    fro_sin_2 = db.Column(db.Float, nullable=True)
+    fro_sin_3 = db.Column(db.Float, nullable=True)
+    fro_sin_4 = db.Column(db.Float, nullable=True)
+    fro_sin_5 = db.Column(db.Float, nullable=True)  
+    
 
     clinic = db.relationship("Clinic", 
-                            secondary="clinic-rates", 
+                            secondary="clinic_rates", 
                             backref="rates")
 
 
     def __repr__(self):
 
-        return f"<Rates rate_id={self.rate_id} is_single_bool={self.is_single_bool} is_fresh_emb={self.is_fresh_emb} rate_group_1={self.rate_group_1} rate_group_2={self.rate_group_2} rate_group_3={self.rate_group_3} rate_group_4={self.rate_group_4} rate_group_5={self.rate_group_5}>"
+        return f"""<Rates rate_id={self.rate_id}
+                        fresh_mul_1={self.fresh_mul_1} fresh_mul_2={self.fresh_mul_2} fresh_mul_3={self.fresh_mul_3} fresh_mul_4={self.fresh_mul_4} fresh_mul_5={self.fresh_mul_5}
+                        fresh_sin_1={self.fresh_sin_1} fresh_sin_2={self.fresh_sin_2} fresh_sin_3={self.fresh_sin_3} fresh_sin_4={self.fresh_sin_4} fresh_sin_5={self.fresh_sin_5}
+                        fro_mul_1={self.fro_mul_1} fro_mul_2={self.fro_mul_2} fro_mul_3={self.fro_mul_3} fro_mul_4={self.fro_mul_4} fro_mul_5={self.fro_mul_5}
+                        fro_sin_1={self.fro_sin_1} fro_sin_2={self.fro_sin_2} fro_sin_3={self.fro_sin_3} fro_sin_4={self.fro_sin_4} fro_sin_5={self.fro_sin_5}>"""
+
+
+
 
 
 class ClinicRate(db.Model):
     """Rate of a specific clinic"""
 
-    __tablename__ = "clinic-rates"
+    __tablename__ = "clinic_rates"
 
     clinic_rate_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     clinic_id = db.Column(db.Integer, db.ForeignKey('clinics.clinic_id'))

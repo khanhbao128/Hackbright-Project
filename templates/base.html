@@ -1,27 +1,17 @@
 <!doctype html>
 <html>
 <head>
-    <title>Ratings</title>
+    <title>Success Rates</title>
 </head>
 <body>
 
-Ratings
+    {% for flash in get_flashed_messages() %}
+      {{ flash }}
+    {% endfor %}
 
-{% if "user_id" in session %}
-  <a href="/logout">Logout</a>
-{% else %}
-  <a href="/login">Login</a>
-{% endif %}
-
-<hr>
-
-{% for flash in get_flashed_messages() %}
-  {{ flash }}
-{% endfor %}
-
-{% block content %}
-  Put your body here.
-{% endblock %}
+    {% block content %}
+      Put your body here.
+    {% endblock %}
 
 </body>
 </html>
