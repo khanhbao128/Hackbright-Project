@@ -1,13 +1,21 @@
 """Utility file to seed data from data table to database"""
 
 from sqlalchemy import func
-from model import Clinic, Rate, ClinicRate
+from model import Clinic, Rate
+from fractions import Fraction
 
 
 from model import connect_to_db, db
 from server import app
 import csv
 
+
+def convert_float(str):
+    try: 
+        return float(Fraction("".join(str.split())))
+
+    except ValueError:
+        return None
 
 
 def load_file(filename):
@@ -23,9 +31,6 @@ def load_file(filename):
     return rows
 
 
-
-
-
 def load_clinics(file_rows):
     """Load clinics into database"""
 
@@ -39,49 +44,31 @@ def load_clinics(file_rows):
     for row in file_rows[1:]:
          # unpack part of each row
         clinic_id, clinic_name, city, state, director = row[:5]
+        fresh_mul_1, fresh_mul_2, fresh_mul_3, fresh_mul_4, fresh_mul_5= map(convert_float, row[5:10])
+        fresh_sin_1, fresh_sin_2, fresh_sin_3, fresh_sin_4, fresh_sin_5 = map(convert_float, row[10:15]) 
+        fro_mul_1, fro_mul_2, fro_mul_3, fro_mul_4, fro_mul_5 = map(convert_float, row[15:20])
+        fro_sin_1, fro_sin_2, fro_sin_3, fro_sin_4, fro_sin_5 = map(convert_float, row[20:25])
 
 
-        clinic = Clinic(clinic_id=clinic_id, clinic_name=clinic_name, city=city, state=state, director=director)
+        clinic = Clinic(clinic_name=clinic_name, city=city, state=state, director=director)
+
+        rate = Rate(fresh_mul_1=fresh_mul_1, fresh_mul_2=fresh_mul_2, fresh_mul_3=fresh_mul_3, fresh_mul_4=fresh_mul_4, fresh_mul_5=fresh_mul_5,
+                    fresh_sin_1=fresh_sin_1, fresh_sin_2=fresh_sin_2, fresh_sin_3=fresh_sin_3, fresh_sin_4=fresh_sin_4, fresh_sin_5=fresh_sin_5, 
+                    fro_mul_1=fro_mul_1, fro_mul_2=fro_mul_2, fro_mul_3=fro_mul_3, fro_mul_4=fro_mul_4, fro_mul_5=fro_mul_5,
+                    fro_sin_1=fro_sin_1, fro_sin_2=fro_sin_2, fro_sin_3=fro_sin_3, fro_sin_4=fro_sin_4, fro_sin_5=fro_sin_5)
         
+        rate.clinic = clinic
         # add to the session or it won't ever be stored
+        
         db.session.add(clinic)
 
     # Once done, commit
     db.session.commit()
 
 
-def load_rates(file_rows):
-    """Load rates from file into database"""
 
-    print("Rates")
 
-    # Delete all rows in table, so if we need to run this a second time,
-    # we won't be trying to add duplicate users
-    # Rate.query.delete()
 
-    for row in file_rows[1:]:
-        fresh_mul_1, fresh_mul_2, fresh_mul_3, fresh_mul_4, fresh_mul_5 = row[5:10]
-        fresh_sin_1, fresh_sin_2, fresh_sin_3, fresh_sin_4, fresh_sin_5 = row[10:15] 
-        fro_mul_1, fro_mul_2, fro_mul_3, fro_mul_4, fro_mul_5 = row[15:20]
-        fro_sin_1, fro_sin_2, fro_sin_3, fro_sin_4, fro_sin_5 = row[20:25]  
-
-        rate = Rate(fresh_mul_1=fresh_mul_1, fresh_mul_2=fresh_mul_2, fresh_mul_3=fresh_mul_3, fresh_mul_4=fresh_mul_4, fresh_mul_5=fresh_mul_5,
-                    fresh_sin_1=fresh_sin_1, fresh_sin_2=fresh_sin_2, fresh_sin_3=fresh_sin_3, fresh_sin_4=fresh_sin_4, fresh_sin_5=fresh_sin_5, 
-                    fro_mul_1=fro_mul_1, fro_mul_2=fro_mul_2, fro_mul_3=fro_mul_3, fro_mul_4=fro_mul_4, fro_mul_5=fro_mul_5,
-                    fro_sin_1=fro_sin_1, fro_sin_2=fro_sin_2, fro_sin_3=fro_sin_3, fro_sin_4=fro_sin_4, fro_sin_5=fro_sin_5)
-                     
-        # add to the session
-        db.session.add(rate)
-
-    db.session.commit()
-
-def load_clinic_rates():
-
-    clinic_rate = ClinicRate(clinic_rate_id=clinic_rate_id, clinic_rate=clinic_rate, rate_id=rate_id)
-
-    db.session.add(clinic_rate)
-
-    db.session.commit()
 
 
 
@@ -96,8 +83,7 @@ if __name__ == "__main__":
 
     rows = load_file(filename)
     load_clinics(rows)
-    load_rates(rows)  
-    load_clinic_rates() 
+    
 
 
 

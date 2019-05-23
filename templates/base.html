@@ -1,17 +1,33 @@
 <!doctype html>
 <html>
 <head>
-    <title>Success Rates</title>
+    <title>Clinics and Success Rates</title>
+    <link rel="stylesheet" type="text/css" href="statics/map.css">
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
 </head>
+
 <body>
-
-    {% for flash in get_flashed_messages() %}
-      {{ flash }}
-    {% endfor %}
-
-    {% block content %}
-      Put your body here.
+  Clinics and Success Rates
+  <hr>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class=flashes>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+    {% block content %}Content Here
     {% endblock %}
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/babel-standalone@6.26.0/babel.js" type='text/jsx'></script>
+
 
 </body>
 </html>

@@ -7,3 +7,13 @@
    background-color: grey;
  }
 </style>
+
+th, td {
+    border: .1em solid red;
+    padding: .25em;
+}
+
+table {
+    border-collapse: collapse;
+    width: 80%;
+}
