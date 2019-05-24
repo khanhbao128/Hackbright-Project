@@ -6,9 +6,12 @@
     <style>
       /* Set the size of the div element that contains the map */
       #map {
-        height: 400px;  /* The height is 400 pixels */
+        /*height: 400px;   The height is 400 pixels */
         width: 100%;  /* The width is the width of the web page */
        }
+        html, body {
+            height: 100%;
+        }
     </style>
 {% endblock %}
 
@@ -22,8 +25,8 @@
         Use the map below and select a state and a city to locate fertility clinics near you. Learn about the services they provide, the types of patients they see, and their success rates.<br><br>
             
 
-            State:
-            <select name="state" id='state'>
+            <!-- State: -->
+            <!-- <select name="state" id='state'>
                 <option value="ALABAMA">Alabama</option>
                 <option value="ALASKA">Alaska</option>
                 <option value="ARIZONA">Arizona</option>
@@ -50,9 +53,9 @@
                 <option value="MINNESOTA">Minnesota</option>
                 <option value="MISSISSIPPI">Mississippi</option>
                 <option value="MISSOURI">Missouri</option>
-                <option value="MONTANA">Montana</option>
-                <option value="NEBRASKA">Nebraska</option>
-                <option value="NEVADA">Nevada</option>
+                <option value="MONTANA">Montana</option> -->
+                <!-- <option value="NEBRASKA">Nebraska</option> -->
+                <!-- <option value="NEVADA">Nevada</option>
                 <option value="NEW HAMPSHIRE">New Hampshire</option>
                 <option value="NEW JERSEY">New Jersey</option>
                 <option value="NEW MEXICO">New Mexico</option>
@@ -75,20 +78,21 @@
                 <option value="WEST VIRGINIA">West Virginia</option>
                 <option value="WISCONSIN">Wisconsin</option>
                 <option value="WYOMING">Wyoming</option>
-            </select>
+            </select> -->
            
             <br><br>
 
            
-            City:
-
-            <input type="textarea" name="city">
-            
-
-           
             <!-- City:
 
-            <input type="text" id="autocomplete" name='city'/> -->
+            <input type="textarea" name="city"> -->
+            
+
+<!--             <input type="text" id="autocomplete-states" name='state'/>
+ -->
+            City:
+
+            <input type="text" id="autocomplete-cities" name='city'/>
 
             <input type='submit' value="Go"><br><br>
 
@@ -96,27 +100,26 @@
 
 
             <!-- <script> -->
-             <!-- var input = document.getElementById('autocomplete-cities');
-            // var autocomplete1 = new google.maps.places.Autocomplete(input,{types: ['(cities)']});
-            // google.maps.event.addListener(autocomplete1, 'place_changed', function(){
-            // var place = autocomplete1.getPlace();
-            // })
-            // var input = document.getElementById('autocomplete-states');
-            // var autocomplete2 = new google.maps.places.Autocomplete(input,{types: ['(states)']});
-            // google.maps.event.addListener(autocomplete2, 'place_changed', function(){
-            // var place = autocomplete2.getPlace();
-            // }) -->
+            
+<!-- 
+            // function autocompleteCity() {
+            //     var input = document.getElementById('autocomplete-cities');
+            //     var autocomplete1 = new google.maps.places.Autocomplete(input,{types: ['(cities)']});
+            //     google.maps.event.addListener(autocomplete1, 'place_changed', function(){
+            //         var place = autocomplete1.getPlace();
+            //         alert(place)
+            //     })
+
+            //     var input = document.getElementById('autocomplete-states');
+            //     var autocomplete2 = new google.maps.places.Autocomplete(input,{types: ['(states)']});
+            //     google.maps.event.addListener(autocomplete2, 'place_changed', function(){
+            //         var place = autocomplete2.getPlace();
+            //     })
+            // }  -->
+                
 
 
-            <!-- function autocompleteCity() {
 
-                var options = {types: ['(cities)'], componentRestrictions: {country: "us"}};
-
-                var input = document.getElementById('autocomplete');
-                var autocomplete = new google.maps.places.Autocomplete(input, options);
-            }
-
- -->
             <!-- </script> -->
 
 
@@ -127,21 +130,36 @@
     <div id="map"></div>
     <script>
       // Initialize and add the map
-      function initMap() {
+    var map 
+    function initGoogle() {
         // The location of Uluru
         var uluru = {lat: 39.381266, lng: -97.922211};
         // The map, centered at Uluru
-        var map = new google.maps.Map(
+        map = new google.maps.Map(
           document.getElementById('map'), {zoom: 4, center: uluru});
         // The marker, positioned at Uluru
         var marker = new google.maps.Marker({position: uluru, map: map});
-        }
-    </script>
-    <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1y8atwwt1qwp5VH6k-Wm1Xwqkuw3IgxM&libraries=places&callback=autocompleteCity"></script> -->
+        
+        var input = document.getElementById('autocomplete-cities');
+                var autocomplete1 = new google.maps.places.Autocomplete(input,{types: ['(cities)']});
+                google.maps.event.addListener(autocomplete1, 'place_changed', function(){
+                    var place = autocomplete1.getPlace();
+                    alert(place)
+                })
+    }
 
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1y8atwwt1qwp5VH6k-Wm1Xwqkuw3IgxM&callback=initMap">
+                // var input = document.getElementById('autocomplete-states');
+                // var autocomplete2 = new google.maps.places.Autocomplete(input,{types: ['(states)']});
+                // google.maps.event.addListener(autocomplete2, 'place_changed', function(){
+                //     var place = autocomplete2.getPlace();
+                // })}
     </script>
+
+    <script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1y8atwwt1qwp5VH6k-Wm1Xwqkuw3IgxM&libraries=places&callback=initGoogle"></script>
+
+    <!-- <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1y8atwwt1qwp5VH6k-Wm1Xwqkuw3IgxM&callback=initMap">
+    </script> -->
     
 
 

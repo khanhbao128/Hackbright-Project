@@ -19,6 +19,11 @@ app.secret_key = "ABC"
 app.jinja_env.undefined = StrictUndefined
 
 
+API_Key = os.environ.get('AIzaSyA1y8atwwt1qwp5VH6k-Wm1Xwqkuw3IgxM')
+
+places_URL = "https://maps.googleapis.com/maps/api/place/details/json"
+
+
 
 
 @app.route('/', methods=["GET"])
@@ -69,10 +74,7 @@ def show_rates(clinic_name):
 
     rates = Rate.query.filter_by(clinic_id=clinic_id)
 
-    # clinic_id = Clinic.query.filter_by(clinic_name=clinic_name)
-
-
-    # rates = Rate.query.filter(Rate.clinic_id==clinic_id).all()
+    
 
     return render_template('/show_rates.html', rates=rates, clinic_name=clinic_name)
 
