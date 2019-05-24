@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h4>{{ user_state }} CLINICS</h4> 
+
+    <table>
+        <tr>
+            <th>Clinic Name</th>
+            <th>State</th>
+            <th>City</th>
+        </tr>
+        
+        {% for clinic in user_clinics %}
+            <tr>
+                <td><a href='/show_rates/{{ clinic.clinic_name }}'>{{ clinic.clinic_name }}</td>
+                <td>{{ clinic.state}}</td>
+                <td>{{ clinic.city }}</td>
+            </tr> 
+            {% endfor %}
+
+        
+    </table>
+
+{% endblock %}
+
+    
+
+</body>
+</html>

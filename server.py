@@ -1,6 +1,7 @@
 from jinja2 import StrictUndefined
 
 from flask import Flask, render_template, request, flash, redirect, session
+import requests
 from flask_debugtoolbar import DebugToolbarExtension
 
 from model import Clinic, Rate

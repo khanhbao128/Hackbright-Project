@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+View ART Data:<br><br>
+
+<h4>{{ clinic_name }}</h4>
+
+Fresh embryo:<br><br>
+    What is the chance of having multiple live births?<br>
+        Age of woman
+        <table>
+            <tr>
+                <th></th>
+                <th>Less than 35</th>
+                <th>35-37</th>
+                <th>38-40</th>
+                <th>More than 40</th>
+            </tr>
+            <tr>
+                {% for rate in rates %}
+                <td>Clinic</td>
+                <td>{{ rate.fresh_mul_1 }}</td>
+                <td>{{ rate.fresh_mul_2 }}</td>
+                <td>{{ rate.fresh_mul_3 }}</td>
+                <td>{{ rate.fresh_mul_4 }}</td>
+                {% endfor %}
+            </tr>
+        </table><br>
+
+Fresh embryo:<br><br>
+
+What is the chance of having a term, normal birth weight and singleton live birth?<br>
+        Age of woman
+        <table>
+            <tr>
+                <th></th>
+                <th>Less than 35</th>
+                <th>35-37</th>
+                <th>38-40</th>
+                <th>More than 40</th>
+            </tr>
+            <tr>
+                {% for rate in rates %}
+                <td>Clinic</td>
+                <td>{{ rate.fresh_sin_1 }}</td>
+                <td>{{ rate.fresh_sin_2 }}</td>
+                <td>{{ rate.fresh_sin_3 }}</td>
+                <td>{{ rate.fresh_sin_4 }}</td>
+                {% endfor %}
+            </tr>
+        </table><br>
+
+
+
+Frozen embryo:<br><br>
+    What is the chance of having multiple live births?<br>
+        Age of woman
+        <table>
+            <tr>
+                <th></th>
+                <th>Less than 35</th>
+                <th>35-37</th>
+                <th>38-40</th>
+                <th>More than 40</th>
+            </tr>
+            <tr>
+                 {% for rate in rates %}
+
+                <td>Clinic</td>
+                <td>{{ rate.fro_mul_1 }}</td>
+                <td>{{ rate.fro_mul_2 }}</td>
+                <td>{{ rate.fro_mul_3 }}</td>
+                <td>{{ rate.fro_mul_4 }}</td>
+                {% endfor %}
+            </tr>
+        </table><br>
+
+Frozen embryo:<br><br>
+    What is the chance of having a term, normal birth weight and singleton live birth?<br>
+        Age of woman
+        <table>
+            <tr>
+                <th></th>
+                <th>Less than 35</th>
+                <th>35-37</th>
+                <th>38-40</th>
+                <th>More than 40</th>
+            </tr>
+            <tr>
+                {% for rate in rates %}
+
+                <td>Clinic</td>
+                <td>{{ rate.fro_sin_1 }}</td>
+                <td>{{ rate.fro_sin_2 }}</td>
+                <td>{{ rate.fro_sin_3 }}</td>
+                <td>{{ rate.fro_sin_4 }}</td>
+                {% endfor %}
+            </tr>
+        </table>
+
+{% endblock %}
+
+
+
+
+    
+
+

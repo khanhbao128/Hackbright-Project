@@ -1,6 +1,8 @@
-<!DOCTYPE html>
-<html>
-  <head>
+{% extends 'base.html' %}
+
+
+{% block title %}
+
     <style>
       /* Set the size of the div element that contains the map */
       #map {
@@ -8,15 +10,16 @@
         width: 100%;  /* The width is the width of the web page */
        }
     </style>
-  </head>
-  <body>
+{% endblock %}
+
+
+{% block content %}
+
     <h3>Locate a Fertility Clinic</h3>
 
-
     <!-- Create a search bar -->
-    
         <form action='/get-state-city' method="POST">
-            Use the map below and select a state to locate fertility clinics near you. Learn about the services they provide, the types of patients they see, and their success rates.<br><br>
+        Use the map below and select a state and a city to locate fertility clinics near you. Learn about the services they provide, the types of patients they see, and their success rates.<br><br>
             
 
             State:
@@ -75,18 +78,50 @@
             </select>
            
             <br><br>
+
            
             City:
 
             <input type="textarea" name="city">
             
 
+           
+            <!-- City:
+
+            <input type="text" id="autocomplete" name='city'/> -->
+
             <input type='submit' value="Go"><br><br>
+
+
+
+
+            <!-- <script> -->
+             <!-- var input = document.getElementById('autocomplete-cities');
+            // var autocomplete1 = new google.maps.places.Autocomplete(input,{types: ['(cities)']});
+            // google.maps.event.addListener(autocomplete1, 'place_changed', function(){
+            // var place = autocomplete1.getPlace();
+            // })
+            // var input = document.getElementById('autocomplete-states');
+            // var autocomplete2 = new google.maps.places.Autocomplete(input,{types: ['(states)']});
+            // google.maps.event.addListener(autocomplete2, 'place_changed', function(){
+            // var place = autocomplete2.getPlace();
+            // }) -->
+
+
+            <!-- function autocompleteCity() {
+
+                var options = {types: ['(cities)'], componentRestrictions: {country: "us"}};
+
+                var input = document.getElementById('autocomplete');
+                var autocomplete = new google.maps.places.Autocomplete(input, options);
+            }
+
+ -->
+            <!-- </script> -->
+
+
         </form>
-   
-
-                
-
+         
 
     <!--The div element for the map -->
     <div id="map"></div>
@@ -102,14 +137,12 @@
         var marker = new google.maps.Marker({position: uluru, map: map});
         }
     </script>
+    <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1y8atwwt1qwp5VH6k-Wm1Xwqkuw3IgxM&libraries=places&callback=autocompleteCity"></script> -->
+
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1y8atwwt1qwp5VH6k-Wm1Xwqkuw3IgxM&callback=initMap">
     </script>
-
-    <script>
-
-    </script>
+    
 
 
-    </body>
-</html>
+{% endblock %}
