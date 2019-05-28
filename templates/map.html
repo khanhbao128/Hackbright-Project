@@ -22,7 +22,7 @@
 
     <!-- Create a search bar -->
         <form action='/get-state-city' method="POST">
-        Use the map below and select a state and a city to locate fertility clinics near you. Learn about the services they provide, the types of patients they see, and their success rates.<br><br>
+        Use the map below and select a city and a state to locate fertility clinics near you. Learn about the services they provide, the types of patients they see, and their success rates.<br><br>
             
 
             <!-- State: -->
@@ -90,9 +90,9 @@
 
 <!--             <input type="text" id="autocomplete-states" name='state'/>
  -->
-            City:
+            Location:
 
-            <input type="text" id="autocomplete-cities" name='city'/>
+            <input type="text" id="autocomplete-location" name='location'/>
 
             <input type='submit' value="Go"><br><br>
 
@@ -127,26 +127,29 @@
          
 
     <!--The div element for the map -->
-    <div id="map"></div>
+    <div id="map" style="height:400px; width:400px"></div>
     <script>
-      // Initialize and add the map
-    var map 
-    function initGoogle() {
-        // The location of Uluru
-        var uluru = {lat: 39.381266, lng: -97.922211};
-        // The map, centered at Uluru
-        map = new google.maps.Map(
-          document.getElementById('map'), {zoom: 4, center: uluru});
-        // The marker, positioned at Uluru
-        var marker = new google.maps.Marker({position: uluru, map: map});
-        
-        var input = document.getElementById('autocomplete-cities');
-                var autocomplete1 = new google.maps.places.Autocomplete(input,{types: ['(cities)']});
-                google.maps.event.addListener(autocomplete1, 'place_changed', function(){
-                    var place = autocomplete1.getPlace();
-                    alert(place)
-                })
-    }
+        function initGoogle() {
+            // The location of Uluru
+            const uluru = { lat: 39.381266, lng: -97.922211 };
+            // The map, centered at Uluru
+            const map = new google.maps.Map(
+              document.getElementById('map'),
+              { zoom: 4, center: uluru }
+            );
+            // The marker, positioned at Uluru
+            const marker = new google.maps.Marker({ position: uluru, map: map });
+            
+            const autocomplete1 = new google.maps.places.Autocomplete(
+                document.getElementById('autocomplete-location'),
+                { types: [ '(cities)' ] }
+            );
+
+            google.maps.event.addListener(autocomplete1, 'place_changed', function(){
+                var place = autocomplete1.getPlace();
+                alert(place)
+            })
+        }
 
                 // var input = document.getElementById('autocomplete-states');
                 // var autocomplete2 = new google.maps.places.Autocomplete(input,{types: ['(states)']});

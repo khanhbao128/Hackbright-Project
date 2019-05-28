@@ -19,12 +19,6 @@ app.secret_key = "ABC"
 app.jinja_env.undefined = StrictUndefined
 
 
-API_Key = os.environ.get('AIzaSyA1y8atwwt1qwp5VH6k-Wm1Xwqkuw3IgxM')
-
-places_URL = "https://maps.googleapis.com/maps/api/place/details/json"
-
-
-
 
 @app.route('/', methods=["GET"])
 def index():
@@ -39,59 +33,103 @@ def index():
 def get_state_city():
     """Return a list of clinics corresponding to a particular state and city"""
 
+    location = request.form.get('location')
 
-    user_state = request.form.get("state")
+    location = location.split(",")
 
-    user_city = request.form.get('city').upper()
+    user_city = location[0].upper()
+
+    user_state = location[1].lstrip()
 
     state_clinics = Clinic.query.filter_by(state=user_state).all()
 
-    cities = []
+    all_cities = []
 
     for clinic in state_clinics:
         city = clinic.city
-        cities.append(city)
+        all_cities.append(city)
 
-    if user_city in cities:
-        user_clinics = Clinic.query.filter_by(city=user_city).all()
+    if user_city in all_cities:
+        user_clinics = Clinic.query.filter((Clinic.city==user_city) & (Clinic.state==user_state)).all()
     else:
         return redirect('/')
 
-    return render_template('show_list.html', user_clinics=user_clinics, user_state=user_state)
+    return render_template('show_list.html', user_clinics=user_clinics, user_city=user_city, user_state=user_state)
 
 
 
 
 
-@app.route('/show_rates/<clinic_name>')
+@app.route('/show_full_address_rates/<clinic_name>')
 def show_rates(clinic_name):
     """Provide success rates of each clinic"""
 
-    desired_clinics = Clinic.query.filter_by(clinic_name=clinic_name).first()
+    user_clinic = Clinic.query.filter_by(clinic_name=clinic_name).first()
 
-    clinic_id = desired_clinics.clinic_id
+    user_clinic_id = user_clinic.clinic_id
 
+    user_clinic_name = user_clinic.clinic_name
 
-    rates = Rate.query.filter_by(clinic_id=clinic_id)
+    user_clinic_city = user_clinic.city
 
+    input_para = str(user_clinic_name) + " " + str(user_clinic_city)
+
+    inputs = input_para.split(" ")
+
+    inputs = "%20".join(inputs)
+
+    inputs = "'" + inputs + "'"
     
+    print(inputs)
+   
 
-    return render_template('/show_rates.html', rates=rates, clinic_name=clinic_name)
+    # key = "AIzaSyDfjxfPTabsjVyZPQT1zp9L1VaB9sjvwxc"
+
+    url = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=" + inputs + "&inputtype=textquery&fields=formatted_address,geometry&key=AIzaSyDfjxfPTabsjVyZPQT1zp9L1VaB9sjvwxc"
+
+    response = requests.get(url)
+
+    # print(response)
+
+    # response = requests.get('https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Museum%20of%20Contemporary%20Art%20Australia&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=AIzaSyDfjxfPTabsjVyZPQT1zp9L1VaB9sjvwxc')
+    data = response.json()
+    print(data)
+
+    if response.ok:
+
+        user_clinic_address = data['candidates'][0]['formatted_address']
+
+        geo_location = data['candidates'][0]['geometry']['location']
+
+        latitude = geo_location['lat']
+
+        longtitude = geo_location['lng']
+
+        print(latitude, longtitude)
+
+
+        rates = Rate.query.filter_by(clinic_id=user_clinic_id)
+
+        return render_template('/show_rates.html', rates=rates, clinic_name=user_clinic_name,
+
+                                 clinic_address=user_clinic_address, latitude=latitude, longtitude=longtitude)
+
+    else: 
+        flash("Sorry, no information about this clinic found currently")
+        redirect('/get-state-city')
+
+
+
+# @app.route('/get_full_address')
+# def get_addresss():
+    """Provide a full address for each clinic using Places API"""
+
+
 
 
 
     
                                         
-
-        
-
-
-
-    
-
-
-
-
 
 if __name__ == "__main__":
     # We have to set debug=True here, since it has to be True at the point

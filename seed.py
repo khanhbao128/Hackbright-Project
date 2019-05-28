@@ -23,7 +23,7 @@ def load_file(filename):
 
     rows = []
 
-    with open('statics/2016 data.csv') as csvfile:
+    with open(filename) as csvfile:
         spamreader = csv.reader(csvfile, quotechar='"', delimiter=",")
         
         for row in spamreader:
@@ -79,7 +79,7 @@ if __name__ == "__main__":
     connect_to_db(app)
     db.create_all()
 
-    filename = "statics/2016 data.csv"
+    filename = "static/2016 data-1.csv"
 
     rows = load_file(filename)
     load_clinics(rows)
