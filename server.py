@@ -103,16 +103,16 @@ def show_rates(clinic_name):
 
         latitude = geo_location['lat']
 
-        longtitude = geo_location['lng']
+        longitude = geo_location['lng']
 
-        print(latitude, longtitude)
+        print(latitude, longitude)
 
 
         rates = Rate.query.filter_by(clinic_id=user_clinic_id)
 
         return render_template('/show_rates.html', rates=rates, clinic_name=user_clinic_name,
 
-                                 clinic_address=user_clinic_address, latitude=latitude, longtitude=longtitude)
+                                 clinic_address=user_clinic_address, latitude=latitude, longitude=longitude)
 
     else: 
         flash("Sorry, no information about this clinic found currently")

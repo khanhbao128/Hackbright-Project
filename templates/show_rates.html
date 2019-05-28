@@ -3,19 +3,7 @@
 {% block content %}
 
 <h1>View ART Data:</h2><br><br>
-<!-- <script>
 
-function myFetch() {    
-    fetch('http://example.com/movies.json')
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(myJson) {
-        console.log(JSON.stringify(myJson));
-      });
-}  
-</script>    
- -->
 <h2>{{ clinic_name }}</h2>
 <h3>{{ clinic_address }}</h3>
 
@@ -113,25 +101,25 @@ Frozen embryo:<br><br>
             </tr>
         </table>
 
-<div id="map" style="height:400px; width:400px"></div>
+
+
+<div id="clinic_map" style="height:400px; width:400px"></div>
 
 <script>
 
     var marker;
 
     function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 4,
-            center: {lat: 39.381266, lng: -97.922211}
+        var map = new google.maps.Map(document.getElementById('clinic_map'), {
+            zoom: 12,
+            center: {lat: {{ latitude }}, lng: {{ longitude }}}
         });
 
-        var marker = new google.maps.Marker({
+        marker = new google.maps.Marker({
             map: map,
             animation: google.maps.Animation.DROP,
-            position: {lat: {{latitude}} , lng: {{longtitude}}}
+            position: {lat: {{ latitude }}, lng: {{ longitude }}}
         });
-    
-
         marker.addListener('click', toggleBounce);
     }
 
@@ -142,11 +130,12 @@ Frozen embryo:<br><br>
             marker.setAnimation(google.maps.Animation.BOUNCE);
         }
     }
-
-
 </script>
 
-<script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1y8atwwt1qwp5VH6k-Wm1Xwqkuw3IgxM&libraries=places&callback=initMap"></script>
+<script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfjxfPTabsjVyZPQT1zp9L1VaB9sjvwxc&callback=initMap">
+</script>
+
+
 
 {% endblock %}
 
