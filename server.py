@@ -1,6 +1,7 @@
 from jinja2 import StrictUndefined
 
 from flask import Flask, render_template, request, flash, redirect, session
+import json
 import requests
 from flask_debugtoolbar import DebugToolbarExtension
 
@@ -46,16 +47,19 @@ def get_state_city():
     all_cities = []
 
     for clinic in state_clinics:
+
         city = clinic.city
+
         all_cities.append(city)
 
     if user_city in all_cities:
+
         user_clinics = Clinic.query.filter((Clinic.city==user_city) & (Clinic.state==user_state)).all()
+
     else:
         return redirect('/')
 
     return render_template('show_list.html', user_clinics=user_clinics, user_city=user_city, user_state=user_state)
-
 
 
 
@@ -88,10 +92,8 @@ def show_rates(clinic_name):
     url = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=" + inputs + "&inputtype=textquery&fields=formatted_address,geometry&key=AIzaSyDfjxfPTabsjVyZPQT1zp9L1VaB9sjvwxc"
 
     response = requests.get(url)
+    print(response)
 
-    # print(response)
-
-    # response = requests.get('https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Museum%20of%20Contemporary%20Art%20Australia&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=AIzaSyDfjxfPTabsjVyZPQT1zp9L1VaB9sjvwxc')
     data = response.json()
     print(data)
 
@@ -108,15 +110,54 @@ def show_rates(clinic_name):
         print(latitude, longitude)
 
 
-        rates = Rate.query.filter_by(clinic_id=user_clinic_id)
+        # rates = Rate.query.filter_by(clinic_id=user_clinic_id)
+        rate = user_clinic.rate_data
+        print(rate)
 
-        return render_template('/show_rates.html', rates=rates, clinic_name=user_clinic_name,
+        # adding all rate attributes to a dictionary, turn that dictionary to json and pass it to 'show_rates.html' so that JS can understand null values (jinja can understand None but JS doesn't. Need to convert None to null by jsonifying)
+        rate_dict = {}
+
+
+        rate_dict['fresh_mul_1'] = rate.fresh_mul_1
+        rate_dict['fresh_mul_2'] = rate.fresh_mul_2
+        rate_dict['fresh_mul_3'] = rate.fresh_mul_3
+        rate_dict['fresh_mul_4'] = rate.fresh_mul_4
+
+        rate_dict['fresh_sin_1'] = rate.fresh_sin_1
+        rate_dict['fresh_sin_2'] = rate.fresh_sin_2
+        rate_dict['fresh_sin_3'] = rate.fresh_sin_3
+        rate_dict['fresh_sin_4'] = rate.fresh_sin_4
+
+        rate_dict['fro_mul_1'] = rate.fro_mul_1
+        rate_dict['fro_mul_2'] = rate.fro_mul_2
+        rate_dict['fro_mul_3'] = rate.fro_mul_3
+        rate_dict['fro_mul_4'] = rate.fro_mul_4
+
+        rate_dict['fro_sin_1'] = rate.fro_sin_1
+        rate_dict['fro_sin_2'] = rate.fro_sin_2
+        rate_dict['fro_sin_3'] = rate.fro_sin_3
+        rate_dict['fro_sin_4'] = rate.fro_sin_4
+
+        # print(rate_dict)
+
+        rate_dict = json.dumps(rate_dict)
+        print("HEEERREE", rate_dict)
+        print(type(rate_dict))
+
+
+     
+
+        return render_template('/show_rates.html', rate=user_clinic.rate_data, rate_dict=rate_dict, clinic_name=user_clinic_name,
 
                                  clinic_address=user_clinic_address, latitude=latitude, longitude=longitude)
 
     else: 
-        flash("Sorry, no information about this clinic found currently")
+        flash("Sorry, no information about this clinic found.")
         redirect('/get-state-city')
+
+
+
+
 
 
 

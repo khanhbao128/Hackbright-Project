@@ -10,9 +10,10 @@ from server import app
 import csv
 
 
-def convert_float(str):
+def convert_to_float(str):
     try: 
-        return float(Fraction("".join(str.split())))
+        # return float(Fraction("".join(str.split(" "))))*100
+        return float((Fraction(str.split(" ")))*100)
 
     except ValueError:
         return None
@@ -44,10 +45,10 @@ def load_clinics(file_rows):
     for row in file_rows[1:]:
          # unpack part of each row
         clinic_id, clinic_name, city, state, director = row[:5]
-        fresh_mul_1, fresh_mul_2, fresh_mul_3, fresh_mul_4, fresh_mul_5= map(convert_float, row[5:10])
-        fresh_sin_1, fresh_sin_2, fresh_sin_3, fresh_sin_4, fresh_sin_5 = map(convert_float, row[10:15]) 
-        fro_mul_1, fro_mul_2, fro_mul_3, fro_mul_4, fro_mul_5 = map(convert_float, row[15:20])
-        fro_sin_1, fro_sin_2, fro_sin_3, fro_sin_4, fro_sin_5 = map(convert_float, row[20:25])
+        fresh_mul_1, fresh_mul_2, fresh_mul_3, fresh_mul_4, fresh_mul_5= map(convert_to_float, row[5:10])
+        fresh_sin_1, fresh_sin_2, fresh_sin_3, fresh_sin_4, fresh_sin_5 = map(convert_to_float, row[10:15]) 
+        fro_mul_1, fro_mul_2, fro_mul_3, fro_mul_4, fro_mul_5 = map(convert_to_float, row[15:20])
+        fro_sin_1, fro_sin_2, fro_sin_3, fro_sin_4, fro_sin_5 = map(convert_to_float, row[20:25])
 
 
         clinic = Clinic(clinic_name=clinic_name, city=city, state=state, director=director)

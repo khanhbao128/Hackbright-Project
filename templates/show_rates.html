@@ -20,13 +20,11 @@ Fresh embryo:<br><br>
                 <th>More than 40</th>
             </tr>
             <tr>
-                {% for rate in rates %}
                 <td>Clinic</td>
                 <td>{{ rate.fresh_mul_1 }}</td>
                 <td>{{ rate.fresh_mul_2 }}</td>
                 <td>{{ rate.fresh_mul_3 }}</td>
                 <td>{{ rate.fresh_mul_4 }}</td>
-                {% endfor %}
             </tr>
         </table><br>
 
@@ -43,13 +41,11 @@ What is the chance of having a term, normal birth weight and singleton live birt
                 <th>More than 40</th>
             </tr>
             <tr>
-                {% for rate in rates %}
                 <td>Clinic</td>
                 <td>{{ rate.fresh_sin_1 }}</td>
                 <td>{{ rate.fresh_sin_2 }}</td>
                 <td>{{ rate.fresh_sin_3 }}</td>
                 <td>{{ rate.fresh_sin_4 }}</td>
-                {% endfor %}
             </tr>
         </table><br>
 
@@ -67,14 +63,12 @@ Frozen embryo:<br><br>
                 <th>More than 40</th>
             </tr>
             <tr>
-                 {% for rate in rates %}
 
                 <td>Clinic</td>
                 <td>{{ rate.fro_mul_1 }}</td>
                 <td>{{ rate.fro_mul_2 }}</td>
                 <td>{{ rate.fro_mul_3 }}</td>
                 <td>{{ rate.fro_mul_4 }}</td>
-                {% endfor %}
             </tr>
         </table><br>
 
@@ -90,16 +84,149 @@ Frozen embryo:<br><br>
                 <th>More than 40</th>
             </tr>
             <tr>
-                {% for rate in rates %}
-
                 <td>Clinic</td>
                 <td>{{ rate.fro_sin_1 }}</td>
                 <td>{{ rate.fro_sin_2 }}</td>
                 <td>{{ rate.fro_sin_3 }}</td>
                 <td>{{ rate.fro_sin_4 }}</td>
-                {% endfor %}
             </tr>
         </table>
+        
+    
+
+
+<div class="clinicChart" style="height: 400px; width: 400px">
+
+    <canvas id="barChartFresh"></canvas>
+    <canvas id="barChartFrozen"></canvas>
+
+    <!-- <div id="barLegend" class="chart-legend"></div> -->
+</div>
+
+<script>
+    
+    // Make Bar Chart of percent of different age groups of woman whose treatments are based on fresh embryo
+    let ctx_bar_fresh = $("#barChartFresh").get(0).getContext("2d");
+    let data = {{ rate_dict |safe }};
+    console.log(data)
+
+    let stackedBarFresh = new Chart(ctx_bar_fresh, {
+        type: 'bar',
+        data: {
+            labels: ['<35', '35-37', '38-40', '>40'],
+            datasets: [
+                {
+                    label: 'Percentage of fresh embryo resulting in multiple live biths', 
+                    data: [ data['fresh_mul_1'] ,  data['fresh_mul_2'] , data['fresh_mul_3'] , data['fresh_mul_4'] ],
+
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                                    // 'rgba(54, 162, 235, 0.2)',
+                                    // 'rgba(255, 206, 86, 0.2)',
+                                    // 'rgba(75, 192, 192, 0.2)',
+                                    // 'rgba(153, 102, 255, 0.2)',
+                                    // 'rgba(255, 159, 64, 0.2)'
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                // 'rgba(54, 162, 235, 1)',
+                // 'rgba(255, 206, 86, 1)',
+                // 'rgba(75, 192, 192, 1)',
+                // 'rgba(153, 102, 255, 1)',
+                // 'rgba(255, 159, 64, 1)'
+            
+                    borderWidth: 1           
+                },
+
+                {
+                    label: 'Percentage of fresh embryo resulting in singleton live births', 
+                    data: [data['fresh_sin_1'], data['fresh_sin_2'], data['fresh_sin_3'], data['fresh_sin_4']],
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1    
+                }
+
+            ],
+        },
+        options: {
+            responsive: true,
+            scales: {
+                xAxes: [{
+                    // stacked: true
+                    type: 'category',
+                    labels: ['Less than 35', '35-37', '38-40', '>40']
+                }],
+                yAxes: [{
+                    ticks: {
+                        suggestedMin: 10,
+                        suggestedMax: 100
+                    }
+                }]
+            }
+        }
+        
+    });
+
+
+
+    // Create bar chart for different age groups of women whose treatments are based on frozen embryo
+    let ctx_bar_frozen = $("#barChartFrozen").get(0).getContext("2d");
+
+    let stackedBarFrozen = new Chart(ctx_bar_frozen, {
+        type: 'bar',
+        connectNullData: true,
+        data: {
+            labels: ['<35', '35-37', '38-40', '>40'],
+            datasets: [
+                {
+                    label: 'Percentage of frozen embryo resulting in multiple live biths', 
+                    data: [data['fro_mul_1'], data['fro_mul_2'],  data['fro_mul_3'] , data['fro_mul_4']],
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                                    // 'rgba(54, 162, 235, 0.2)',
+                                    // 'rgba(255, 206, 86, 0.2)',
+                                    // 'rgba(75, 192, 192, 0.2)',
+                                    // 'rgba(153, 102, 255, 0.2)',
+                                    // 'rgba(255, 159, 64, 0.2)'
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                // 'rgba(54, 162, 235, 1)',
+                // 'rgba(255, 206, 86, 1)',
+                // 'rgba(75, 192, 192, 1)',
+                // 'rgba(153, 102, 255, 1)',
+                // 'rgba(255, 159, 64, 1)'
+            
+                    borderWidth: 1           
+                },
+
+                {
+                    label: 'Percentage of frozen embryo resulting in singleton live births', 
+                    data: [ data['fro_sin_1'] , data['fro_sin_2'] ,  data['fro_sin_3'] , data['fro_sin_4'] ],
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1    
+                }
+
+            ],
+        },
+        options: {
+            responsive: true,
+            scales: {
+                xAxes: [{
+                    // stacked: true
+                    type: 'category',
+                    labels: ['Less than 35', '35-37', '38-40', '>40']
+                }],
+                yAxes: [{
+                    ticks: {
+                        suggestedMin: 10,
+                        suggestedMax: 100
+                    }
+                }]
+            }
+        }
+    });
+
+
+</script>
+
+
+
 
 
 
@@ -107,10 +234,10 @@ Frozen embryo:<br><br>
 
 <script>
 
-    var marker;
+    let marker;
 
     function initMap() {
-        var map = new google.maps.Map(document.getElementById('clinic_map'), {
+        let map = new google.maps.Map(document.getElementById('clinic_map'), {
             zoom: 12,
             center: {lat: {{ latitude }}, lng: {{ longitude }}}
         });
@@ -132,8 +259,13 @@ Frozen embryo:<br><br>
     }
 </script>
 
+</div>
+
 <script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfjxfPTabsjVyZPQT1zp9L1VaB9sjvwxc&callback=initMap">
 </script>
+
+
+
 
 
 
