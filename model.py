@@ -25,6 +25,9 @@ class Clinic(db.Model):
     rate_data = db.relationship("Rate", backref="clinic",
                                         uselist=False)
 
+    service_list = db.relationship("Service", backref="clinic",
+                                        uselist=False)
+
     def __repr__(self):
         """Provide complete info about each clinic object"""
 
@@ -72,6 +75,30 @@ class Rate(db.Model):
                         fresh_sin_1={self.fresh_sin_1} fresh_sin_2={self.fresh_sin_2} fresh_sin_3={self.fresh_sin_3} fresh_sin_4={self.fresh_sin_4} fresh_sin_5={self.fresh_sin_5}
                         fro_mul_1={self.fro_mul_1} fro_mul_2={self.fro_mul_2} fro_mul_3={self.fro_mul_3} fro_mul_4={self.fro_mul_4} fro_mul_5={self.fro_mul_5}
                         fro_sin_1={self.fro_sin_1} fro_sin_2={self.fro_sin_2} fro_sin_3={self.fro_sin_3} fro_sin_4={self.fro_sin_4} fro_sin_5={self.fro_sin_5}>"""
+
+
+
+class Service(db.Model):
+    """Provide a list of services each clinic provides"""
+
+    __tablename__ = "services"
+
+    service_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    clinic_id = db.Column(db.Integer, db.ForeignKey('clinics.clinic_id'))
+    is_sart = db.Column(db.String(200))
+    is_surrogates = db.Column(db.String(200))
+    is_single = db.Column(db.String(200))
+    is_eggcryo = db.Column(db.String(200))
+    is_embryocryo = db.Column(db.String(200))
+    is_donor_emb = db.Column(db.String(200))
+    is_donor_egg = db.Column(db.String(200))
+
+    def __repr__(self):
+
+        return f"""<Services is_sart={self.is_sart} is_surrogates={self.is_surrogates} is_single={self.is_single} is_eggcryo={self.is_eggcryo}
+                            is_embryocryo={self.is_embryocryo} is_donor_emb={self.is_donor_emb} is_donor_egg={self.is_donor_egg}>"""
+
+
 
 
 ##############################################################################

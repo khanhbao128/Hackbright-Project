@@ -10,8 +10,8 @@
 
 
 <script>
-var ctx = document.getElementById('myChart');
-var myChart = new Chart(ctx, {
+const ctx = document.getElementById('myChart');
+const myChart = new Chart(ctx, {
     type: 'bar',
     data: {
         labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
@@ -52,3 +52,65 @@ var myChart = new Chart(ctx, {
 
 </body>
 </html>
+
+
+
+<table id="services">
+    <tr>
+        <th>Clinic Services and Profile</th>
+        <td>Member of SART</td>
+        <td>Gestational carrier services</td>
+        <td>Services for single women</td>
+        <td>Egg cryopreservation services</td>
+        <td>Embryo cryopreservation services</td>
+        <td>Donor embryo services</td>
+        <td>Donor egg services</td>
+    </tr>
+    <tr>
+        <td></td>
+        {% if {{ user_services.is_sart }} == "Yes" %}
+        <td>Yes</td>
+        {% else %}
+        <td>No</td>
+        {% endif %}
+
+
+        {% if {{ user_services.is_surrogates }} == "Yes" %}
+        <td>Yes</td>
+        {% else %}
+        <td>No</td>
+        {% endif %}
+
+        {% if {{ user_services.is_single }} == "Yes" %}
+        <td>Yes</td>
+        {% else %}
+        <td>No</td>
+        {% endif %}
+
+
+        {% if {{ user_services.is_eggcryo }} == "Yes" %}
+        <td>Yes</td>
+        {% else %}
+        <td>No</td>
+        {% endif %}
+
+        {% if {{ user_services.is_embrocryo }} == "Yes" %}
+        <td>Yes</td>
+        {% else %}
+        <td>No</td>
+        {% endif %}
+
+        {% if {{ user_services.is_donor_emb }} == "Yes" %}
+        <td>Yes</td>
+        {% else %}
+        <td>No</td>
+        {% endif %}
+
+        {% if {{ user_services.is_donor_egg }} == "Yes" %}
+        <td>Yes</td>
+        {% else %}
+        <td>No</td>
+        {% endif %}
+    </tr>
+</table>
+

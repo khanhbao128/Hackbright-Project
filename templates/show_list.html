@@ -27,8 +27,8 @@ function fetchData() {
         
         {% for clinic in user_clinics %}
         <tr>
-            <td><a href='/show_full_address_rates/{{ clinic.clinic_name }}'>{{ clinic.clinic_name }}</a></td> 
-            <td>{{ clinic.state}}</td>
+            <td><a href='/show_address_services_rates/{{ clinic.clinic_name }}'>{{ clinic.clinic_name }}</a></td> 
+            <td>{{ clinic.state }}</td>
             <td>{{ clinic.city }}</td>
         </tr> 
         {% endfor %}

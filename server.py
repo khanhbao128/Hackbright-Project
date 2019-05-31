@@ -5,7 +5,7 @@ import json
 import requests
 from flask_debugtoolbar import DebugToolbarExtension
 
-from model import Clinic, Rate
+from model import Clinic, Rate, Service
 
 from model import connect_to_db, db
 
@@ -64,7 +64,9 @@ def get_state_city():
 
 
 
-@app.route('/show_full_address_rates/<clinic_name>')
+
+
+@app.route('/show_address_services_rates/<clinic_name>')
 def show_rates(clinic_name):
     """Provide success rates of each clinic"""
 
@@ -144,16 +146,26 @@ def show_rates(clinic_name):
         print("HEEERREE", rate_dict)
         print(type(rate_dict))
 
+        # get services of clinic selected by user
+        user_services = Service.query.filter_by(clinic_id=user_clinic_id).first()
+        
+        print(user_services)
+
+
 
      
 
-        return render_template('/show_rates.html', rate=user_clinic.rate_data, rate_dict=rate_dict, clinic_name=user_clinic_name,
+        return render_template('/show_services_rates.html', rate=user_clinic.rate_data, rate_dict=rate_dict, clinic_name=user_clinic_name,
 
-                                 clinic_address=user_clinic_address, latitude=latitude, longitude=longitude)
+                                 clinic_address=user_clinic_address, latitude=latitude, longitude=longitude, user_services=user_services)
+
 
     else: 
         flash("Sorry, no information about this clinic found.")
         redirect('/get-state-city')
+
+
+
 
 
 
