@@ -1,12 +1,77 @@
 {% extends 'base.html' %}
 
+
 {% block content %}
+
+{% macro create_service_td(has_service) %}
+    {% if has_service == "Yes" %}
+        <td>Yes</td>
+    {% else %}
+        <td>No</td>
+    {% endif %}
+{% endmacro %}
 
 <h1>View ART Data:</h2><br><br>
 
 <h2>{{ clinic_name }}</h2>
 <h3>{{ clinic_address }}</h3>
 
+{# <h4>Clinic Services and Profile</h4> #}
+
+{# <ul class="clinicServices">
+            
+        
+            {% for service_name in ["Member of SART", "Gestational Carrier Services", "Services for Single Women", "Egg Cryopreservation Services", "Embryo Cryopreservation Services", "Embryo Cryopreservation Services", "Donor Embryo Services", "Donor Egg Services"]
+            %}
+
+            <span class="serviceName">{{ service_name }}</span>
+
+            {% endfor %}
+
+        
+            {% for service in [user_services.is_sart,
+                           user_services.is_surrogates,
+                           user_services.is_single,
+                           user_services.is_eggcryo,
+                           user_services.is_embryocryo,
+                           user_services.is_donor_emb,
+                           user_services.is_donor_egg]
+            %}
+         
+            <span class="serviceName">{{ create_service_td(service) }}</span>
+
+            {% endfor %}
+        
+            
+</ul>
+
+        
+        
+            <span class="serviceName">{{ service }}</span>
+
+    
+            <span class="serviceName">{{ create_service_td(service) }}</span>
+</div>
+    
+         {% endfor %}
+
+        <span class="serviceName">
+            {% for service in [user_services.is_sart,
+                           user_services.is_surrogates,
+                           user_services.is_single,
+                           user_services.is_eggcryo,
+                           user_services.is_embryocryo,
+                           user_services.is_donor_emb,
+                           user_services.is_donor_egg]
+            %}
+            {{ service}}
+            {{ create_service_td(service) }}
+        
+#}
+
+
+        
+<div class="table-responsive">
 <table id="services">
     <tr>
         <th>Clinic Services and Profile</th>
@@ -18,12 +83,29 @@
         <td>Donor embryo services</td>
         <td>Donor egg services</td>
     </tr>
+    <tr>
+
+        <td></td>
+        <td>
+            {% for service in [user_services.is_sart,
+                               user_services.is_surrogates,
+                               user_services.is_single,
+                               user_services.is_eggcryo,
+                               user_services.is_embryocryo,
+                               user_services.is_donor_emb,
+                               user_services.is_donor_egg]
+            %}
+                {{ create_service_td(service) }}
+            {% endfor %}
+        </td>
+    </tr>
+        
     
 </table>
+</div>
 
 
-
-Fresh embryo:<br><br>
+<br>Fresh embryo:<br><br>
     What is the chance of having multiple live births?<br>
         Age of woman
         <table id="fresh_mul">
@@ -107,15 +189,16 @@ Frozen embryo:<br><br>
             </tr>
         </table>
         
-    
 
+<button id="get-chart-button">Please click here for each clinic's charts</button>
 
-<div class="clinicChart" style="height: 400px; width: 400px">
-
-    <canvas id="barChartFresh"></canvas>
-    <canvas id="barChartFrozen"></canvas>
-
-    <!-- <div id="barLegend" class="chart-legend"></div> -->
+<div class="clinicCharts">  
+    <div class="clinicChart" >
+        <canvas id="barChartFresh"></canvas>
+    </div>
+    <div class="clinicChart">
+        <canvas id="barChartFrozen"></canvas>
+    </div>
 </div>
 
 <script>
@@ -135,17 +218,8 @@ Frozen embryo:<br><br>
                     data: [ data['fresh_mul_1'] ,  data['fresh_mul_2'] , data['fresh_mul_3'] , data['fresh_mul_4'] ],
 
                     backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                                    // 'rgba(54, 162, 235, 0.2)',
-                                    // 'rgba(255, 206, 86, 0.2)',
-                                    // 'rgba(75, 192, 192, 0.2)',
-                                    // 'rgba(153, 102, 255, 0.2)',
-                                    // 'rgba(255, 159, 64, 0.2)'
+                                    
                     borderColor: 'rgba(255, 99, 132, 1)',
-                // 'rgba(54, 162, 235, 1)',
-                // 'rgba(255, 206, 86, 1)',
-                // 'rgba(75, 192, 192, 1)',
-                // 'rgba(153, 102, 255, 1)',
-                // 'rgba(255, 159, 64, 1)'
             
                     borderWidth: 1           
                 },
@@ -194,17 +268,8 @@ Frozen embryo:<br><br>
                     label: 'Percentage of frozen embryo resulting in multiple live biths', 
                     data: [data['fro_mul_1'], data['fro_mul_2'],  data['fro_mul_3'] , data['fro_mul_4']],
                     backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                                    // 'rgba(54, 162, 235, 0.2)',
-                                    // 'rgba(255, 206, 86, 0.2)',
-                                    // 'rgba(75, 192, 192, 0.2)',
-                                    // 'rgba(153, 102, 255, 0.2)',
-                                    // 'rgba(255, 159, 64, 0.2)'
+                                    
                     borderColor: 'rgba(255, 99, 132, 1)',
-                // 'rgba(54, 162, 235, 1)',
-                // 'rgba(255, 206, 86, 1)',
-                // 'rgba(75, 192, 192, 1)',
-                // 'rgba(153, 102, 255, 1)',
-                // 'rgba(255, 159, 64, 1)'
             
                     borderWidth: 1           
                 },
@@ -240,8 +305,14 @@ Frozen embryo:<br><br>
 
 </script>
 
+<div  id="visibleCharts" onClick="makeInvisible();">
+<script>
+    function makeVisible() {
 
 
+$("get-chart-button").on('click', makeVisible())
+            }
+</script>
 
 
 

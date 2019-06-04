@@ -64,8 +64,6 @@ def get_state_city():
 
 
 
-
-
 @app.route('/show_address_services_rates/<clinic_name>')
 def show_rates(clinic_name):
     """Provide success rates of each clinic"""
@@ -150,9 +148,6 @@ def show_rates(clinic_name):
         user_services = Service.query.filter_by(clinic_id=user_clinic_id).first()
         
         print(user_services)
-
-
-
      
 
         return render_template('/show_services_rates.html', rate=user_clinic.rate_data, rate_dict=rate_dict, clinic_name=user_clinic_name,
@@ -165,11 +160,10 @@ def show_rates(clinic_name):
         redirect('/get-state-city')
 
 
+# @app.route('show_charts')
+# def show_charts():
 
-
-
-
-
+#     return render_template('show_charts.html')
 
 
 

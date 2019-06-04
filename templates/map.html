@@ -2,7 +2,6 @@
 
 
 {% block title %}
-
     <style>
       /* Set the size of the div element that contains the map */
       #map {
@@ -23,107 +22,16 @@
     <!-- Create a search bar -->
         <form action='/get-state-city' method="POST">
         Use the map below and select a city and a state to locate fertility clinics near you. Learn about the services they provide, the types of patients they see, and their success rates.<br><br>
-            
+        <br><br>
 
-            <!-- State: -->
-            <!-- <select name="state" id='state'>
-                <option value="ALABAMA">Alabama</option>
-                <option value="ALASKA">Alaska</option>
-                <option value="ARIZONA">Arizona</option>
-                <option value="ARKANSAS">Arkansas</option>
-                <option value="CALIFORNIA">California</option>
-                <option value="COLORADO">Colorado</option>
-                <option value="CONNECTICUT">Connecticut</option>
-                <option value="DELAWARE">Delaware</option>
-                <option value="DISTRICT OF COLUMBIA">District Of Columbia</option>
-                <option value="FLORIA">Florida</option>
-                <option value="GEORGIA">Georgia</option>
-                <option value="HAWAII">Hawaii</option>
-                <option value="IDAHO">Idaho</option>
-                <option value="ILLINOIS">Illinois</option>
-                <option value="INDIANA">Indiana</option>
-                <option value="IOWA">Iowa</option>
-                <option value="KANSAS">Kansas</option>
-                <option value="KENTUCKY">Kentucky</option>
-                <option value="LOUISIANA">Louisiana</option>
-                <option value="MAINE">Maine</option>
-                <option value="MARYLAND">Maryland</option>
-                <option value="MASSACHUSETTS">Massachusetts</option>
-                <option value="MICHIGAN">Michigan</option>
-                <option value="MINNESOTA">Minnesota</option>
-                <option value="MISSISSIPPI">Mississippi</option>
-                <option value="MISSOURI">Missouri</option>
-                <option value="MONTANA">Montana</option> -->
-                <!-- <option value="NEBRASKA">Nebraska</option> -->
-                <!-- <option value="NEVADA">Nevada</option>
-                <option value="NEW HAMPSHIRE">New Hampshire</option>
-                <option value="NEW JERSEY">New Jersey</option>
-                <option value="NEW MEXICO">New Mexico</option>
-                <option value="NEW YORK">New York</option>
-                <option value="NORTH CAROLINA">North Carolina</option>
-                <option value="NORTH DAKOTA">North Dakota</option>
-                <option value="OHIO">Ohio</option>
-                <option value="OKLAHOMA">Oklahoma</option>
-                <option value="OREGON">Oregon</option>
-                <option value="PENNYSYLVANIA">Pennsylvania</option>
-                <option value="RHODE ISLAND">Rhode Island</option>
-                <option value="SOUTH CAROLINA">South Carolina</option>
-                <option value="SOUTH DAKOTA">South Dakota</option>
-                <option value="TENNESSEE">Tennessee</option>
-                <option value="TEXAS">Texas</option>
-                <option value="UTAH">Utah</option>
-                <option value="VERMONT">Vermont</option>
-                <option value="VIRGINIA">Virginia</option>
-                <option value="WASHINGTON">Washington</option>
-                <option value="WEST VIRGINIA">West Virginia</option>
-                <option value="WISCONSIN">Wisconsin</option>
-                <option value="WYOMING">Wyoming</option>
-            </select> -->
-           
-            <br><br>
-
-           
-            <!-- City:
-
-            <input type="textarea" name="city"> -->
-            
-
-<!--             <input type="text" id="autocomplete-states" name='state'/>
- -->
-            Location:
-
+        Location:
             <input type="text" id="autocomplete-location" name='location'/>
-
-            <input type='submit' value="Go"><br><br>
-
-
-
-
-            <!-- <script> -->
-            
-<!-- 
-            // function autocompleteCity() {
-            //     var input = document.getElementById('autocomplete-cities');
-            //     var autocomplete1 = new google.maps.places.Autocomplete(input,{types: ['(cities)']});
-            //     google.maps.event.addListener(autocomplete1, 'place_changed', function(){
-            //         var place = autocomplete1.getPlace();
-            //         alert(place)
-            //     })
-
-            //     var input = document.getElementById('autocomplete-states');
-            //     var autocomplete2 = new google.maps.places.Autocomplete(input,{types: ['(states)']});
-            //     google.maps.event.addListener(autocomplete2, 'place_changed', function(){
-            //         var place = autocomplete2.getPlace();
-            //     })
-            // }  -->
-                
-
-
-
-            <!-- </script> -->
-
-
+            <input type='submit' id='go' value="Go"><br><br>
         </form>
+
+    
+
+  
          
 
     <!--The div element for the map -->
@@ -147,15 +55,11 @@
 
             google.maps.event.addListener(autocomplete1, 'place_changed', function(){
                 var place = autocomplete1.getPlace();
-                alert(place)
+                
             })
         }
 
-                // var input = document.getElementById('autocomplete-states');
-                // var autocomplete2 = new google.maps.places.Autocomplete(input,{types: ['(states)']});
-                // google.maps.event.addListener(autocomplete2, 'place_changed', function(){
-                //     var place = autocomplete2.getPlace();
-                // })}
+                
     </script>
 
     <script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1y8atwwt1qwp5VH6k-Wm1Xwqkuw3IgxM&libraries=places&callback=initGoogle"></script>

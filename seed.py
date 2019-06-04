@@ -12,11 +12,10 @@ import csv
 
 def convert_to_float(str):
     try: 
-        # if "/" in given_str:
-
-        return float(Fraction("".join(str.split(" "))))
-        # else:
-            # return float(given_str)
+        if "/" in str:
+            return float(Fraction("".join(str.split(" "))))*100
+        else:
+            return float(str)
 
     except ValueError:
         return None
