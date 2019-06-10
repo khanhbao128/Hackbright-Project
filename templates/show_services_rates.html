@@ -16,63 +16,21 @@
 <h2>{{ clinic_name }}</h2>
 <h3>{{ clinic_address }}</h3>
 
-{# <h4>Clinic Services and Profile</h4> #}
+<div class="container-fluid">
+    <!-- Begin centered main text -->
+      <div class="row align-items-center">
+        <section class="col-6 mx-auto" id="splash">
+          <img src="/static/another ivf.jpg" class="img-fluid center-block" alt="Image of another ivf" id="another_ivf">
+          <p><p>
+        </section>
+    </div>
 
-{# <ul class="clinicServices">
-            
-        
-            {% for service_name in ["Member of SART", "Gestational Carrier Services", "Services for Single Women", "Egg Cryopreservation Services", "Embryo Cryopreservation Services", "Embryo Cryopreservation Services", "Donor Embryo Services", "Donor Egg Services"]
-            %}
-
-            <span class="serviceName">{{ service_name }}</span>
-
-            {% endfor %}
-
-        
-            {% for service in [user_services.is_sart,
-                           user_services.is_surrogates,
-                           user_services.is_single,
-                           user_services.is_eggcryo,
-                           user_services.is_embryocryo,
-                           user_services.is_donor_emb,
-                           user_services.is_donor_egg]
-            %}
-         
-            <span class="serviceName">{{ create_service_td(service) }}</span>
-
-            {% endfor %}
-        
-            
-</ul>
-
-        
-        
-            <span class="serviceName">{{ service }}</span>
-
-    
-            <span class="serviceName">{{ create_service_td(service) }}</span>
-</div>
-    
-         {% endfor %}
-
-        <span class="serviceName">
-            {% for service in [user_services.is_sart,
-                           user_services.is_surrogates,
-                           user_services.is_single,
-                           user_services.is_eggcryo,
-                           user_services.is_embryocryo,
-                           user_services.is_donor_emb,
-                           user_services.is_donor_egg]
-            %}
-            {{ service}}
-            {{ create_service_td(service) }}
-        
-#}
+      
 
 
-        
-<div class="table-responsive">
-<table id="services">
+<div class="service_table">
+<section class="col-10 mx-auto d-lg-block d-md-block d-none">
+<table class="table-responsive">
     <tr>
         <th>Clinic Services and Profile</th>
         <td>Member of SART</td>
@@ -316,7 +274,7 @@ $("get-chart-button").on('click', makeVisible())
 
 
 
-<div id="clinic_map" style="height:400px; width:400px"></div>
+<div id="clinic_map" style="height: 800px; width:800px"></div>
 
 <script>
 
@@ -324,7 +282,7 @@ $("get-chart-button").on('click', makeVisible())
 
     function initMap() {
         let map = new google.maps.Map(document.getElementById('clinic_map'), {
-            zoom: 12,
+            zoom: 15,
             center: {lat: {{ latitude }}, lng: {{ longitude }}}
         });
 
@@ -345,10 +303,11 @@ $("get-chart-button").on('click', makeVisible())
     }
 </script>
 
-</div>
+
 
 <script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfjxfPTabsjVyZPQT1zp9L1VaB9sjvwxc&callback=initMap">
 </script>
+</div>
 
 
 

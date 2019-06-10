@@ -1,6 +1,6 @@
 from jinja2 import StrictUndefined
 
-from flask import Flask, render_template, request, flash, redirect, session
+from flask import Flask, render_template, request, flash, redirect, session, jsonify
 import json
 import requests
 from flask_debugtoolbar import DebugToolbarExtension
@@ -25,9 +25,42 @@ app.jinja_env.undefined = StrictUndefined
 def index():
     """Homepage."""
 
-    return render_template('map.html')
+    return render_template('homepage.html')
 
+def make_API_call(clinic_name, clinic_city):
 
+    input_para = str(clinic_name) + " " + str(clinic_city)
+
+    inputs = input_para.split(" ")
+
+    inputs = "%20".join(inputs)
+
+    inputs = "'" + inputs + "'"
+    
+    print(inputs)
+   
+
+    # key = "AIzaSyDfjxfPTabsjVyZPQT1zp9L1VaB9sjvwxc"
+
+    url = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=" + inputs + "&inputtype=textquery&fields=formatted_address,geometry&key=AIzaSyDfjxfPTabsjVyZPQT1zp9L1VaB9sjvwxc"
+
+    response = requests.get(url)
+    print(response)
+
+    data = response.json()
+    print(data)
+
+    if response.ok:
+
+        user_clinic_address = data['candidates'][0]['formatted_address']
+
+        geo_location = data['candidates'][0]['geometry']['location']
+
+        return geo_location
+
+        # latitude = geo_location['lat']
+
+        # longitude = geo_location['lng']
 
 
 @app.route('/get-state-city', methods=["POST"])
@@ -44,27 +77,55 @@ def get_state_city():
 
     state_clinics = Clinic.query.filter_by(state=user_state).all()
 
+
     all_cities = []
 
     for clinic in state_clinics:
 
-        city = clinic.city
+        all_cities.append(clinic.city)
 
-        all_cities.append(city)
-
+    #not all cities have fertility clinics so need to use state input to have a list of all cities that exist in database 
     if user_city in all_cities:
 
         user_clinics = Clinic.query.filter((Clinic.city==user_city) & (Clinic.state==user_state)).all()
+    
+        clinic_names = []
 
+        for user_clinic in user_clinics:
+            # create the list of clinic names in the state input
+            clinic_names.append(user_clinic.clinic_name) 
+
+                # user_clinic_json = json.dumps(user_clinics)
+        # create a dictionary and convert it to json so that JS can use the data
+        # user_inputs = {'clinic_names': clinic_names, 'user_city': user_city, 'user_state': user_state}
+        # user_inputs = json.dumps(user_inputs)
+
+        geo_locations = []
+
+        for clinic_name in clinic_names:
+
+            geo_locations.append(make_API_call(clinic_name, user_city))
+        
+        geo_dict = {'geo_location': geo_locations}
+
+        geo_locations = json.dumps(geo_dict)
+        print(type(geo_locations))
+
+
+        # return json.dumps(user_inputs)
+        return render_template('show_list.html', geo_locations=geo_locations, user_clinics=user_clinics, user_city=user_city, user_state=user_state)
     else:
+
         return redirect('/')
 
-    return render_template('show_list.html', user_clinics=user_clinics, user_city=user_city, user_state=user_state)
+    # return render_template('show_list.html', user_clinics=user_clinics, user_city=user_city, user_state=user_state)
+    # return user_clinics
 
 
 
 
-@app.route('/show_address_services_rates/<clinic_name>')
+
+@app.route('/show_services_rates/<clinic_name>')
 def show_rates(clinic_name):
     """Provide success rates of each clinic"""
 
@@ -110,7 +171,7 @@ def show_rates(clinic_name):
         print(latitude, longitude)
 
 
-        # rates = Rate.query.filter_by(clinic_id=user_clinic_id)
+        rates = Rate.query.filter_by(clinic_id=user_clinic_id)
         rate = user_clinic.rate_data
         print(rate)
 
@@ -137,7 +198,6 @@ def show_rates(clinic_name):
         rate_dict['fro_sin_2'] = rate.fro_sin_2
         rate_dict['fro_sin_3'] = rate.fro_sin_3
         rate_dict['fro_sin_4'] = rate.fro_sin_4
-
         # print(rate_dict)
 
         rate_dict = json.dumps(rate_dict)

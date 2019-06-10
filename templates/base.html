@@ -17,16 +17,29 @@
     <!-- Load our stylesheet -->
     <link rel="stylesheet" href="/static/styles.css">
 
-</head>
-<style>
+    <link rel="stylesheet" href='/templates/fullscreen_video.html'>
+
+<!-- <style>
 body {
     font-family: 'sans-serif';
 }
-</style>
+</style> -->
 
 <body>
-  Clinics and Success Rates
-  <hr>
+
+<!-- create navbar for each page -->
+<nav class="navbar navbar-expand-lg my-nav">
+
+<a id="Home Logo" class="navbar-brand" href="/">HOME</a>
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+</nav>
+
+
+  
+  
     {% with messages = get_flashed_messages() %}
         {% if messages %}
         <ul class=flashes>

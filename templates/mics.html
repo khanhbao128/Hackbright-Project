@@ -114,3 +114,52 @@ const myChart = new Chart(ctx, {
     </tr>
 </table>
 
+
+ <script>
+  function sendAlert() {
+      alert("hello");
+    }
+
+    function handleOrderSubmit(evt) {
+      evt.preventDefault();
+
+      const formInputs = {
+        'location': $('#autocomplete_location').val()
+      };
+
+      console.log('POST /new-order');
+      $.post('/get-state-city', formInputs, sendAlert);
+    }
+
+$('#user_input_form').on('submit', handleOrderSubmit);
+#}
+
+
+<script>
+
+{#  let clinic_names = {{ clinic_names }}
+
+
+
+        function getInputs(evt) {
+
+            evt.preventDefault();
+
+            console.log(userInputs)#}
+           
+            $.get('/get-state-city', handleUserInputs);
+
+            return true;
+            }
+
+    $('#user_input_form').on('submit', getInputs);
+  
+#}
+
+
+        
+
+
+   </script>
+
+

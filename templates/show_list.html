@@ -2,29 +2,87 @@
 
 {% block content %}
 
+<div id="show_list">
+<h4>FERTILITY CLINICS IN {{ user_city }}, {{ user_state }}</h4> 
+<!-- It's container-fluid so it spans the entire page. -->
+  <div class="container-fluid">
+    <!-- Begin centered main text -->
+      <div class="row align-items-center">
+    <!-- <section class="col-6 mx-auto" id="splash">
+          <img src="/static/ivf.jpg" class="img-fluid center-block" alt="Image of ivf" id="ivf">
+          <p><p>
+        </section> -->
+    </div>
+    <!-- End of centered main text -->
 
-<h4>CLINICS IN {{ user_city }}, {{ user_state }}</h4> 
+<!-- Table -->
+<div class="row" id="tablerow">
 
-    <table id="clinic_list">
-        <tr>
-            <th>Clinic Name</th>
-            <th>State</th>
-            <th>City</th>
-        </tr>
+    <section class="col-10 mx-auto d-lg-block d-md-block d-none">
+        <table class="table table-hover table-striped" id="clinic_list">
+            <tr>
+                <th>Clinic Name</th>
+                <th>State</th>
+                <th>City</th>
+            </tr>
+            
+            {% for user_clinic in user_clinics %}
+            <tr>
+                <td><a href='/show_services_rates/{{ user_clinic.clinic_name }}'>{{ user_clinic.clinic_name }}</a></td>
+                <td>{{ user_state }}</td>
+                <td>{{ user_city }}</td>
+            </tr> 
+            {% endfor %}
         
-        {% for clinic in user_clinics %}
-        <tr>
-            <td><a href='/show_address_services_rates/{{ clinic.clinic_name }}'>{{ clinic.clinic_name }}</a></td> 
-            <td>{{ clinic.state }}</td>
-            <td>{{ clinic.city }}</td>
-        </tr> 
-        {% endfor %}
-        
-    </table>
+        </table>
+
+    <!-- div element for map and markers -->
+
+    <div id="map_with_markers" style="height:400px; width:400px"></div>
+
+{#   <script>
+
+    let marker;
+
+    function initMap() {
+
+        const geo_locations = {{ geo_locations |safe }};
+        alert(geo_locations);
+
+        let map = new google.maps.Map(document.getElementById('map_with_markers'), {
+            zoom: 12,
+            center: {lat: {{ geo_locations['geo_location'][0]['lat'] }}, lng: {{ geo_locations['geo_location'][0]['lng'] }}}
+        });
+
+        for let i = 0; i <= len(geo_locations) - 1; i++ {
+            const geo_location;
+            marker = new google.maps.Marker({
+            map: map,
+            animation: google.maps.Animation.DROP,
+            position: {lat: {{ geo_location.lat }}, lng: {{ geo_location.lng }}}}
+            });
+            marker.addListener('click', toggleBounce);
+    }
+
+    function toggleBounce() {
+        if (marker.getAnimation() !== null) {
+            marker.setAnimation(null);
+        } else {
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+        }
+    }
+</script>
+
+</div>
+
+<script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfjxfPTabsjVyZPQT1zp9L1VaB9sjvwxc&callback=initMap">
+</script>
+#}
 
 {% endblock %}
 
+
+
+
     
 
-</body>
-</html>
