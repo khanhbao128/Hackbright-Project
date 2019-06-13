@@ -12,13 +12,17 @@
     <!-- End of centered main text -->
 
 <!-- Table -->
-<div class="row" id="table_list">
 
-    <h4 class="text-center">FERTILITY CLINICS IN {{ user_city }}, {{ user_state }}</h4> 
+    <div class="text-center" style="text-align: center; display: inline-block; color: white; padding: 5rem; margin: auto 5rem auto 5rem">
+    <h4>FERTILITY CLINICS IN {{ user_city }}, {{ user_state }}</h4> 
+    </div>
 
+
+<div class = "container fluid">
+    <div class= "row vertical-center" id="tables">
 
     <section class="col-10 mx-auto d-lg-block d-md-block d-none">
-        <table class="table table-hover" id="clinic_list">
+        <table class="table table-hover" id="clinic_list" style="margin: auto">
             <thead>
                 <tr>
                     <th>Clinic Name</th>
@@ -38,12 +42,16 @@
             {% endfor %}
             </tbody>
         </table>
+        <div id="map_with_markers" style="margin: 5rem; height: 400px; width: 80%"></div>
     </section>
+
+</div>
+<!-- div element for map and markers -->
+
 </div>
 
-    <!-- div element for map and markers -->
 
-<div id="map_with_markers" style="height:400px; width:400px"></div>
+    
 
 <script>
 

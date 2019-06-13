@@ -24,22 +24,26 @@
 
      <!-- <div class="overlay"></div> -->
       <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-        <source src="/static/icsi.mp4" type="video/mp4">
+        <source src="/static/icsi_1.mp4" type="video/mp4">
       </video>
       <div class="container">
         <div class="row align-items-center justify-content-center text-light">
-          <div class="col-6">
+          <div class="col-4"></div>
+          <div class="col-4"></div>
+          <div class="col-4">
             <h3>Locate a Fertility Clinic</h3>
 
             <!-- Create a search bar -->
             <form id='user_input_form' action='/get-state-city' method='POST'>
-            Use the map below and select a city and a state to locate fertility clinics near you. Learn about the services they provide, the types of patients they see, and their success rates.<br><br>
+            <p>Select a city and a state below to locate fertility clinics near you.</p>
+            <p>Learn about the services they provide, the types of patients they see, and their success rates.</p>
             
             Location:
                 <input type="text" id="autocomplete-location" name='location'/>
-                <input type='submit' id='go' value="Go"><br><br>
+                <input type='submit' id='go' value="Search"><br><br>
             </form>
           </div>
+
         </div>
       </div>
     </header> 

@@ -10,8 +10,9 @@
 .img-fluid { max-width: 100%; and height: auto;}
 
 .container-fluid {
-  background: url("background.jpg") no-repeat center center;
+  background: url("final_bk.jpg") no-repeat center center;
   background-size: cover;
+  color: white;
 }
 
 /*.table-responsive{-sm|-md|-lg|-xl}*/
@@ -21,6 +22,8 @@
   font-size: x-large;
   color: dark-blue;
 }
+
+
 
 video {
     width: 100%;
@@ -40,11 +43,11 @@ header .container .row {
 }
 
 #autocomplete-location {
-  width: 20rem;
+  width: 10rem;
 }
 
 a {
-  color: #0e1b75;
+
   font-weight: bold;
 }
 
@@ -58,29 +61,29 @@ a {
 }
 
 
-
-
-
-
-.text-center {
-  text-align: center;
-  display: inline-block;
+.treatment-type-fresh, .treatment-type-frozen {
+  margin: 2px; 
+  border: 1px solid black;
+  background: blue; 
+  width: 15%; 
+  color: white;
+  padding: 4px;
 }
+
+
+
 
 #center_text {
   text-align: center;
   display: inline-block;
 }
 
-#table_list td {
 
-}
 #services_rate {
   background: none;
 }
 
-#map_with_markers { 
-  align-items: center }
+
 
 
 
