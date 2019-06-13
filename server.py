@@ -58,10 +58,6 @@ def make_API_call(clinic_name, clinic_city):
 
         return geo_location
 
-        # latitude = geo_location['lat']
-
-        # longitude = geo_location['lng']
-
 
 @app.route('/get-state-city', methods=["POST"])
 def get_state_city():
@@ -100,29 +96,34 @@ def get_state_city():
         # user_inputs = {'clinic_names': clinic_names, 'user_city': user_city, 'user_state': user_state}
         # user_inputs = json.dumps(user_inputs)
 
-        geo_locations = []
+
+        geo_locations = {}
+
+        longitude = []
+        
+        latitude = []
 
         for clinic_name in clinic_names:
 
-            geo_locations.append(make_API_call(clinic_name, user_city))
+            geo_location = make_API_call(clinic_name, user_city)
+
+            longitude.append(geo_location['lng'])
+
+            latitude.append(geo_location['lat'])
+
+
+        geo_locations['lng'] = longitude
+
+        geo_locations['lat'] = latitude
         
-        geo_dict = {'geo_location': geo_locations}
 
-        geo_locations = json.dumps(geo_dict)
-        print(type(geo_locations))
+        geo_locations = json.dumps(geo_locations)
 
-
-        # return json.dumps(user_inputs)
-        return render_template('show_list.html', geo_locations=geo_locations, user_clinics=user_clinics, user_city=user_city, user_state=user_state)
+       
+        return render_template('show_list.html', user_clinics=user_clinics, geo_locations=geo_locations, user_city=user_city, user_state=user_state)
     else:
 
         return redirect('/')
-
-    # return render_template('show_list.html', user_clinics=user_clinics, user_city=user_city, user_state=user_state)
-    # return user_clinics
-
-
-
 
 
 @app.route('/show_services_rates/<clinic_name>')

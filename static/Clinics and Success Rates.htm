@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<!-- saved from url=(0034)http://0.0.0.0:5000/get-state-city -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Clinics and Success Rates</title>
+    <link rel="stylesheet" type="text/css" href="./Clinics and Success Rates_files/map.css">
+
+    <script src="./Clinics and Success Rates_files/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
+    <script src="./Clinics and Success Rates_files/Chart.js"></script>
+    <!-- Load Bootstrap 4 -->
+    <link rel="stylesheet" href="./Clinics and Success Rates_files/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Load Font Awesome -->
+    <link rel="stylesheet" href="./Clinics and Success Rates_files/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+
+    <!-- Load our stylesheet -->
+    <link rel="stylesheet" href="./Clinics and Success Rates_files/styles.css">
+
+<link rel="stylesheet" href="./Clinics and Success Rates_files/toolbar.css" type="text/css"><script type="text/javascript" charset="UTF-8" src="./Clinics and Success Rates_files/common.js"></script><script type="text/javascript" charset="UTF-8" src="./Clinics and Success Rates_files/util.js"></script></head><body>
+
+<!-- create navbar for each page -->
+<nav class="navbar navbar-expand-lg my-nav">
+
+<a id="Home Logo" class="navbar-brand" href="http://0.0.0.0:5000/">HOME</a>
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+</nav>
+
+
+  
+  
+    
+        
+    
+    
+
+<div id="show_list">
+<!-- It's container-fluid so it spans the entire page. -->
+  <div class="container-fluid">
+    <!-- Begin centered main text -->
+      <div class="row align-items-center">
+    
+    </div>
+    <!-- End of centered main text -->
+
+<!-- Table -->
+<div class="row" id="table_list">
+
+    <h4 class="text-center">FERTILITY CLINICS IN SAN FRANCISCO, CA</h4> 
+
+
+    <section class="col-10 mx-auto d-lg-block d-md-block d-none">
+        <table class="table table-hover" id="clinic_list">
+            <thead>
+                <tr>
+                    <th>Clinic Name</th>
+                    <th>State</th>
+                    <th>City</th>
+                </tr>
+            </thead>
+            
+            <tbody class="table-hover">
+            
+            
+                <tr>
+                    <td><a id="clinic_links" href="http://0.0.0.0:5000/show_services_rates/Laurel%20Fertility%20Care">Laurel Fertility Care</a></td>
+                    <td>CA</td>
+                    <td>SAN FRANCISCO</td>
+                </tr> 
+            
+            
+                <tr>
+                    <td><a id="clinic_links" href="http://0.0.0.0:5000/show_services_rates/Pacific%20Fertility%20Center">Pacific Fertility Center</a></td>
+                    <td>CA</td>
+                    <td>SAN FRANCISCO</td>
+                </tr> 
+            
+            
+                <tr>
+                    <td><a id="clinic_links" href="http://0.0.0.0:5000/show_services_rates/Spring%20Fertility">Spring Fertility</a></td>
+                    <td>CA</td>
+                    <td>SAN FRANCISCO</td>
+                </tr> 
+            
+            
+                <tr>
+                    <td><a id="clinic_links" href="http://0.0.0.0:5000/show_services_rates/UCSF%20Center%20for%20Reproductive%20Health">UCSF Center for Reproductive Health</a></td>
+                    <td>CA</td>
+                    <td>SAN FRANCISCO</td>
+                </tr> 
+            
+            </tbody>
+        </table>
+    </section>
+</div>
+
+    <!-- div element for map and markers -->
+
+<div id="map_with_markers" style="height:200px; width:200px"></div>
+
+<script>
+
+    const geo_locations = {"lng": [-122.4230564, -122.405537, -122.4224835, -122.3874996], "lat": [37.790523, 37.8055361, 37.7867227, 37.7659205]};
+
+    function initMap() {
+
+        const uluru = {lat: 39.381266, lng: -97.922211};
+
+        const map = new google.maps.Map(document.getElementById('map_with_markers'), {
+            zoom: 4,
+            disableDoubleClickZoom: true,
+            center: uluru
+        });
+
+        make_markers(map);
+    }
+    function make_markers(map) {
+
+            const geo_locations = {"lng": [-122.4230564, -122.405537, -122.4224835, -122.3874996], "lat": [37.790523, 37.8055361, 37.7867227, 37.7659205]};
+            const geo_lat = geo_locations['lat'] ;
+            console.log(geo_lat);
+            const geo_lng =  geo_locations['lng'] ;
+            console.log(geo_lng);
+            
+            
+        for (let i = 0; i < geo_lat.length; i++) {
+
+            const LatLng = {lat: geo_lat[i], lng: geo_lng[i]};
+
+
+            
+            let marker = new google.maps.Marker({
+            map: map,
+            animation: google.maps.Animation.DROP,
+            position: LatLng
+        });
+            marker.addListener('click', toggleBounce);
+    }
+
+    function toggleBounce() {
+        if (marker.getAnimation() !== null) {
+            marker.setAnimation(null);
+        } else {
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+        }
+    }
+
+</script>
+
+<script async="" defer="" src="./Clinics and Success Rates_files/js">
+</script>
+
+
+
+
+
+    <script crossorigin="" src="./Clinics and Success Rates_files/react.development.js"></script>
+    <script crossorigin="" src="./Clinics and Success Rates_files/react-dom.development.js"></script>
+    <script crossorigin="" src="./Clinics and Success Rates_files/babel.js" type="text/jsx"></script>
+    <script src="./Clinics and Success Rates_files/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+<div id="flDebug" style="">
+  <script type="text/javascript">var DEBUG_TOOLBAR_STATIC_PATH = '/_debug_toolbar/static/'</script>
+  <script type="text/javascript" src="./Clinics and Success Rates_files/jquery.js"></script>
+  <script type="text/javascript" src="./Clinics and Success Rates_files/jquery.tablesorter.js"></script>
+  <script type="text/javascript" src="./Clinics and Success Rates_files/toolbar.js"></script>
+
+  <div style="display: none;" id="flDebugToolbar">
+    <ol id="flDebugPanelList">
+      
+      <li><a id="flHideToolBarButton" href="http://0.0.0.0:5000/get-state-city#" title="Hide Toolbar">Hide »</a></li>
+      
+
+      
+      <li id="flDebugVersionPanel">
+        
+        <a href="http://0.0.0.0:5000/get-state-city" title="Versions" class="flDebugVersionPanel">
+        
+
+        Versions
+        <br><small>Flask 1.0.3</small>
+
+        
+        </a>
+        
+        
+      </li>
+      
+      <li id="flDebugTimerPanel">
+        
+        <a href="http://0.0.0.0:5000/get-state-city" title="Resource Usage" class="flDebugTimerPanel">
+        
+
+        Time
+        <br><small>CPU: 1112.06ms (2217.99ms)</small>
+
+        
+        </a>
+        
+        
+      </li>
+      
+      <li id="flDebugHeaderPanel">
+        
+        <a href="http://0.0.0.0:5000/get-state-city" title="HTTP Headers" class="flDebugHeaderPanel">
+        
+
+        HTTP Headers
+        
+
+        
+        </a>
+        
+        
+      </li>
+      
+      <li id="flDebugRequestVarsPanel">
+        
+        <a href="http://0.0.0.0:5000/get-state-city" title="Request Vars" class="flDebugRequestVarsPanel">
+        
+
+        Request Vars
+        
+
+        
+        </a>
+        
+        
+      </li>
+      
+      <li id="flDebugConfigVarsPanel">
+        
+        <a href="http://0.0.0.0:5000/get-state-city" title="Config" class="flDebugConfigVarsPanel">
+        
+
+        Config
+        
+
+        
+        </a>
+        
+        
+      </li>
+      
+      <li id="flDebugTemplatePanel">
+        
+        <a href="http://0.0.0.0:5000/get-state-city" title="Templates" class="flDebugTemplatePanel">
+        
+
+        Templates
+        <br><small>1 rendered</small>
+
+        
+        </a>
+        
+        
+      </li>
+      
+      <li id="flDebugSQLAlchemyPanel">
+        
+        <a href="http://0.0.0.0:5000/get-state-city" title="SQLAlchemy queries" class="flDebugSQLAlchemyPanel">
+        
+
+        SQLAlchemy
+        <br><small>2 queries</small>
+
+        
+        </a>
+        
+        
+      </li>
+      
+      <li id="flDebugLoggingPanel">
+        
+        <a href="http://0.0.0.0:5000/get-state-city" title="Log Messages" class="flDebugLoggingPanel">
+        
+
+        Logging
+        <br><small>0 messages</small>
+
+        
+        </a>
+        
+        
+      </li>
+      
+      <li id="flDebugRouteListPanel">
+        
+        <a href="http://0.0.0.0:5000/get-state-city" title="Route List" class="flDebugRouteListPanel">
+        
+
+        Route List
+        <br><small>10 routes</small>
+
+        
+        </a>
+        
+        
+      </li>
+      
+      <li id="flDebugProfilerPanel">
+        
+        <a href="http://0.0.0.0:5000/get-state-city" title="Profiler not active" class="flDebugProfilerPanel">
+        
+
+        Profiler
+        <br><small>in-active</small>
+
+        
+        </a>
+        
+        
+        <span class="switch inactive" title="Enable or disable the panel"></span>
+        
+      </li>
+      
+    </ol>
+  </div>
+  <div style="" id="flDebugToolbarHandle">
+    <a title="Show Toolbar" id="flShowToolBarButton" href="http://0.0.0.0:5000/get-state-city#">«</a>
+  </div>
+  
+    
+    <div id="flDebugVersionPanel-content" class="panelContent" style="display: none;">
+      <div class="flDebugPanelTitle">
+        <a href="http://0.0.0.0:5000/get-state-city" class="flDebugClose">Close</a>
+        <h3>Versions</h3>
+      </div>
+      <div class="flDebugPanelContent">
+        <div class="scroll">
+          <h4>Installed Packages</h4>
+
+<p>
+  Installation paths relative to:
+</p>
+<pre>/home/vagrant/src/Hackbright/HB project-1/env/lib/python3.6/site-packages
+</pre>
+
+<table>
+  <thead>
+    <tr>
+      <th>Package</th>
+      <th>Version</th>
+      <th>Installed Path</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      <tr class="flDebugOdd">
+        <td>blinker</td>
+        <td>1.4</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>certifi</td>
+        <td>2019.3.9</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>chardet</td>
+        <td>3.0.4</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>Click</td>
+        <td>7.0</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>Flask</td>
+        <td>1.0.3</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>Flask-DebugToolbar</td>
+        <td>0.10.1</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>Flask-SQLAlchemy</td>
+        <td>2.4.0</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>idna</td>
+        <td>2.8</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>itsdangerous</td>
+        <td>1.1.0</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>Jinja2</td>
+        <td>2.10.1</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>MarkupSafe</td>
+        <td>1.1.1</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>pip</td>
+        <td>19.1.1</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>pkg-resources</td>
+        <td>0.0.0</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>psycopg2</td>
+        <td>2.8.2</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>requests</td>
+        <td>2.22.0</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>setuptools</td>
+        <td>41.0.1</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>SQLAlchemy</td>
+        <td>1.3.3</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>urllib3</td>
+        <td>1.25.3</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>Werkzeug</td>
+        <td>0.15.4</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>wheel</td>
+        <td>0.33.4</td>
+        <td></td>
+      </tr>
+    
+  </tbody>
+</table>
+        </div>
+      </div>
+    </div>
+    
+  
+    
+    <div id="flDebugTimerPanel-content" class="panelContent" style="display: none;">
+      <div class="flDebugPanelTitle">
+        <a href="http://0.0.0.0:5000/get-state-city" class="flDebugClose">Close</a>
+        <h3>Resource Usage</h3>
+      </div>
+      <div class="flDebugPanelContent">
+        <div class="scroll">
+          <table>
+  <colgroup>
+    <col style="width:20%">
+    <col>
+  </colgroup>
+  <thead>
+    <tr>
+      <th>Resource</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      <tr class="flDebugOdd">
+        <td>User CPU time</td>
+        <td>64.446 msec</td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>System CPU time</td>
+        <td>1047.618 msec</td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>Total CPU time</td>
+        <td>1112.064 msec</td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>Elapsed time</td>
+        <td>2217.989 msec</td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>Context switches</td>
+        <td>4358 voluntary, 316 involuntary</td>
+      </tr>
+    
+  </tbody>
+</table>
+
+        </div>
+      </div>
+    </div>
+    
+  
+    
+    <div id="flDebugHeaderPanel-content" class="panelContent" style="display: none;">
+      <div class="flDebugPanelTitle">
+        <a href="http://0.0.0.0:5000/get-state-city" class="flDebugClose">Close</a>
+        <h3>HTTP Headers</h3>
+      </div>
+      <div class="flDebugPanelContent">
+        <div class="scroll">
+          <table>
+  <thead>
+    <tr>
+      <th>Key</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      <tr class="flDebugOdd">
+        <td>CONTENT_TYPE</td>
+        <td>application/x-www-form-urlencoded</td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>HTTP_ACCEPT</td>
+        <td>text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3</td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>HTTP_ACCEPT_ENCODING</td>
+        <td>gzip, deflate</td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>HTTP_ACCEPT_LANGUAGE</td>
+        <td>en-US,en;q=0.9</td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>HTTP_CACHE_CONTROL</td>
+        <td>no-cache</td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>HTTP_CONNECTION</td>
+        <td>keep-alive</td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>HTTP_HOST</td>
+        <td>0.0.0.0:5000</td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>HTTP_REFERER</td>
+        <td>http://0.0.0.0:5000/</td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>HTTP_USER_AGENT</td>
+        <td>Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Mobile Safari/537.36</td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>QUERY_STRING</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>REMOTE_ADDR</td>
+        <td>10.0.2.2</td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>REQUEST_METHOD</td>
+        <td>POST</td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>SCRIPT_NAME</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>SERVER_NAME</td>
+        <td>0.0.0.0</td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>SERVER_PORT</td>
+        <td>5000</td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>SERVER_PROTOCOL</td>
+        <td>HTTP/1.1</td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>SERVER_SOFTWARE</td>
+        <td>Werkzeug/0.15.4</td>
+      </tr>
+    
+  </tbody>
+</table>
+        </div>
+      </div>
+    </div>
+    
+  
+    
+    <div id="flDebugRequestVarsPanel-content" class="panelContent" style="display: none;">
+      <div class="flDebugPanelTitle">
+        <a href="http://0.0.0.0:5000/get-state-city" class="flDebugClose">Close</a>
+        <h3>Request Vars</h3>
+      </div>
+      <div class="flDebugPanelContent">
+        <div class="scroll">
+          
+<h4>View information</h4>
+<table>
+  <thead>
+    <tr>
+      <th>View Function</th>
+      <th>args</th>
+      <th>kwargs</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>__main__.get_state_city</td>
+      <td>[]</td>
+      <td>
+        
+          None
+        
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<h4>COOKIES Variables</h4>
+
+  
+<table>
+  <colgroup>
+    <col style="width:20%">
+    <col>
+  </colgroup>
+  <thead>
+    <tr>
+      <th>Variable</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr class="flDebugOdd">
+      <td>'fldt'</td>
+      <td>'hide'</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h4>SESSION Variables</h4>
+
+  <p>No SESSION data</p>
+
+
+
+
+
+
+<h4>GET Variables</h4>
+
+  
+<table>
+  <thead>
+    <tr>
+      <th>Variable</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+  </tbody>
+</table>
+
+
+
+<h4>POST Variables</h4>
+
+  
+<table>
+  <thead>
+    <tr>
+      <th>Variable</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr class="flDebugOdd">
+      <td>'location'</td>
+      <td>'San Francisco, CA, USA'</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+        </div>
+      </div>
+    </div>
+    
+  
+    
+    <div id="flDebugConfigVarsPanel-content" class="panelContent" style="display: none;">
+      <div class="flDebugPanelTitle">
+        <a href="http://0.0.0.0:5000/get-state-city" class="flDebugClose">Close</a>
+        <h3>Config</h3>
+      </div>
+      <div class="flDebugPanelContent">
+        <div class="scroll">
+          <table>
+    <thead>
+        <tr>
+            <th>Key</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+            <tr class="flDebugOdd">
+                <td>APPLICATION_ROOT</td>
+                <td><code>'/'</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>DEBUG</td>
+                <td><code>True</code></td>
+            </tr>
+        
+            <tr class="flDebugOdd">
+                <td>DEBUG_TB_ENABLED</td>
+                <td><code>True</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>DEBUG_TB_HOSTS</td>
+                <td><code>()</code></td>
+            </tr>
+        
+            <tr class="flDebugOdd">
+                <td>DEBUG_TB_INTERCEPT_REDIRECTS</td>
+                <td><code>True</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>DEBUG_TB_PANELS</td>
+                <td><code>('flask_debugtoolbar.panels.versions.VersionDebugPanel', 'flask_debugtoolbar.panels.timer.TimerDebugPanel', 'flask_debugtoolbar.panels.headers.HeaderDebugPanel', 'flask_debugtoolbar.panels.request_vars.RequestVarsDebugPanel', 'flask_debugtoolbar.panels.config_vars.ConfigVarsDebugPanel', 'flask_debugtoolbar.panels.template.TemplateDebugPanel', 'flask_debugtoolbar.panels.sqlalchemy.SQLAlchemyDebugPanel', 'flask_debugtoolbar.panels.logger.LoggingPanel', 'flask_debugtoolbar.panels.route_list.RouteListDebugPanel', 'flask_debugtoolbar.panels.profiler.ProfilerDebugPanel')</code></td>
+            </tr>
+        
+            <tr class="flDebugOdd">
+                <td>ENV</td>
+                <td><code>'production'</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>EXPLAIN_TEMPLATE_LOADING</td>
+                <td><code>False</code></td>
+            </tr>
+        
+            <tr class="flDebugOdd">
+                <td>JSON_AS_ASCII</td>
+                <td><code>True</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>JSON_SORT_KEYS</td>
+                <td><code>True</code></td>
+            </tr>
+        
+            <tr class="flDebugOdd">
+                <td>JSONIFY_MIMETYPE</td>
+                <td><code>'application/json'</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>JSONIFY_PRETTYPRINT_REGULAR</td>
+                <td><code>False</code></td>
+            </tr>
+        
+            <tr class="flDebugOdd">
+                <td>MAX_CONTENT_LENGTH</td>
+                <td><code>None</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>MAX_COOKIE_SIZE</td>
+                <td><code>4093</code></td>
+            </tr>
+        
+            <tr class="flDebugOdd">
+                <td>PERMANENT_SESSION_LIFETIME</td>
+                <td><code>datetime.timedelta(31)</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>PREFERRED_URL_SCHEME</td>
+                <td><code>'http'</code></td>
+            </tr>
+        
+            <tr class="flDebugOdd">
+                <td>PRESERVE_CONTEXT_ON_EXCEPTION</td>
+                <td><code>None</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>PROPAGATE_EXCEPTIONS</td>
+                <td><code>None</code></td>
+            </tr>
+        
+            <tr class="flDebugOdd">
+                <td>SECRET_KEY</td>
+                <td><code>'ABC'</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>SEND_FILE_MAX_AGE_DEFAULT</td>
+                <td><code>datetime.timedelta(0, 43200)</code></td>
+            </tr>
+        
+            <tr class="flDebugOdd">
+                <td>SERVER_NAME</td>
+                <td><code>None</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>SESSION_COOKIE_DOMAIN</td>
+                <td><code>False</code></td>
+            </tr>
+        
+            <tr class="flDebugOdd">
+                <td>SESSION_COOKIE_HTTPONLY</td>
+                <td><code>True</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>SESSION_COOKIE_NAME</td>
+                <td><code>'session'</code></td>
+            </tr>
+        
+            <tr class="flDebugOdd">
+                <td>SESSION_COOKIE_PATH</td>
+                <td><code>None</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>SESSION_COOKIE_SAMESITE</td>
+                <td><code>None</code></td>
+            </tr>
+        
+            <tr class="flDebugOdd">
+                <td>SESSION_COOKIE_SECURE</td>
+                <td><code>False</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>SESSION_REFRESH_EACH_REQUEST</td>
+                <td><code>True</code></td>
+            </tr>
+        
+            <tr class="flDebugOdd">
+                <td>SQLALCHEMY_BINDS</td>
+                <td><code>None</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>SQLALCHEMY_COMMIT_ON_TEARDOWN</td>
+                <td><code>False</code></td>
+            </tr>
+        
+            <tr class="flDebugOdd">
+                <td>SQLALCHEMY_DATABASE_URI</td>
+                <td><code>'postgresql:///rates'</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>SQLALCHEMY_ECHO</td>
+                <td><code>False</code></td>
+            </tr>
+        
+            <tr class="flDebugOdd">
+                <td>SQLALCHEMY_ENGINE_OPTIONS</td>
+                <td><code>{}</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>SQLALCHEMY_MAX_OVERFLOW</td>
+                <td><code>None</code></td>
+            </tr>
+        
+            <tr class="flDebugOdd">
+                <td>SQLALCHEMY_NATIVE_UNICODE</td>
+                <td><code>None</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>SQLALCHEMY_POOL_RECYCLE</td>
+                <td><code>None</code></td>
+            </tr>
+        
+            <tr class="flDebugOdd">
+                <td>SQLALCHEMY_POOL_SIZE</td>
+                <td><code>None</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>SQLALCHEMY_POOL_TIMEOUT</td>
+                <td><code>None</code></td>
+            </tr>
+        
+            <tr class="flDebugOdd">
+                <td>SQLALCHEMY_RECORD_QUERIES</td>
+                <td><code>None</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>SQLALCHEMY_TRACK_MODIFICATIONS</td>
+                <td><code>False</code></td>
+            </tr>
+        
+            <tr class="flDebugOdd">
+                <td>TEMPLATES_AUTO_RELOAD</td>
+                <td><code>None</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>TESTING</td>
+                <td><code>False</code></td>
+            </tr>
+        
+            <tr class="flDebugOdd">
+                <td>TRAP_BAD_REQUEST_ERRORS</td>
+                <td><code>None</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>TRAP_HTTP_EXCEPTIONS</td>
+                <td><code>False</code></td>
+            </tr>
+        
+            <tr class="flDebugOdd">
+                <td>USE_X_SENDFILE</td>
+                <td><code>False</code></td>
+            </tr>
+        
+    </tbody>
+</table>
+        </div>
+      </div>
+    </div>
+    
+  
+    
+    <div id="flDebugTemplatePanel-content" class="panelContent" style="display: none;">
+      <div class="flDebugPanelTitle">
+        <a href="http://0.0.0.0:5000/get-state-city" class="flDebugClose">Close</a>
+        <h3>Templates</h3>
+      </div>
+      <div class="flDebugPanelContent">
+        <div class="scroll">
+          
+  
+  
+    <h4>show_list.html</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>Variable</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr class="flDebugOdd">
+          <td>g</td>
+          <td>&lt;flask.g of 'server'&gt;</td>
+        </tr>
+        
+        <tr class="flDebugEven">
+          <td>geo_locations</td>
+          <td>'{"lng": [-122.4230564, -122.405537, -122.4224835, -122.3874996], "lat": [37.790523, 37.8055361, 37.7867227, 37.7659205]}'</td>
+        </tr>
+        
+        <tr class="flDebugOdd">
+          <td>request</td>
+          <td>&lt;Request 'http://0.0.0.0:5000/get-state-city' [POST]&gt;</td>
+        </tr>
+        
+        <tr class="flDebugEven">
+          <td>session</td>
+          <td>&lt;SecureCookieSession {}&gt;</td>
+        </tr>
+        
+        <tr class="flDebugOdd">
+          <td>user_city</td>
+          <td>'SAN FRANCISCO'</td>
+        </tr>
+        
+        <tr class="flDebugEven">
+          <td>user_clinics</td>
+          <td>[&lt;Clinic clinic_id=73 clinic_name=Laurel Fertility Care city=SAN FRANCISCO state=CA director=Collin B. Smikle, MD&gt;, &lt;Clinic clinic_id=74 clinic_name=Pacific Fertility Center city=SAN FRANCISCO state=CA director=Philip E. Chenette, MD&gt;, &lt;Clinic clinic_id=75 clinic_name=Spring Fertility city=SAN FRANCISCO state=CA director=Nam D. Tran, MD, PhD&gt;, &lt;Clinic clinic_id=76 clinic_name=UCSF Center for Reproductive Health city=SAN FRANCISCO state=CA director=Marcelle I. Cedars, MD&gt;]</td>
+        </tr>
+        
+        <tr class="flDebugOdd">
+          <td>user_state</td>
+          <td>'CA'</td>
+        </tr>
+        
+      </tbody>
+    </table>
+  
+
+        </div>
+      </div>
+    </div>
+    
+  
+    
+    <div id="flDebugSQLAlchemyPanel-content" class="panelContent" style="display: none;">
+      <div class="flDebugPanelTitle">
+        <a href="http://0.0.0.0:5000/get-state-city" class="flDebugClose">Close</a>
+        <h3>SQLAlchemy queries</h3>
+      </div>
+      <div class="flDebugPanelContent">
+        <div class="scroll">
+          <table class="tablesorter">
+  <thead>
+    <tr>
+      <th class="header">&nbsp;(ms)</th>
+      <th class="header">Action</th>
+      <th class="header">Context</th>
+      <th class="header">Query</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      <tr class="flDebugOdd">
+        <td>0.8652</td>
+        <td>
+        
+          <a class="remoteCall" href="http://0.0.0.0:5000/_debug_toolbar/views/sqlalchemy/sql_select?query=.eJyLVgp29XF1DlFIzsnMy0wu1oPQ8ZkpCo7BMMF4uKAOurq8xNxULCpBwkhqM0sqURQB-QjZ4pLEEhQzwAII-ZTMotTkkvwiZCVwsZg8tyB_X5g4kBvu4Rrkima2rYKqBpgVb6hZrKRTrQTlKFkpOTsq1cYCACTRXH4.W6A4RUFYso5wyF74OmW513Gyx50&amp;duration=0.0008652210235595703">SELECT</a><br>
+          <a class="remoteCall" href="http://0.0.0.0:5000/_debug_toolbar/views/sqlalchemy/sql_explain?query=.eJyLVgp29XF1DlFIzsnMy0wu1oPQ8ZkpCo7BMMF4uKAOurq8xNxULCpBwkhqM0sqURQB-QjZ4pLEEhQzwAII-ZTMotTkkvwiZCVwsZg8tyB_X5g4kBvu4Rrkima2rYKqBpgVb6hZrKRTrQTlKFkpOTsq1cYCACTRXH4.W6A4RUFYso5wyF74OmW513Gyx50&amp;duration=0.0008652210235595703">EXPLAIN</a><br>
+        
+        </td>
+        <td title="/home/vagrant/src/Hackbright/HB project-1/server.py:74 (get_state_city)">
+                    ./server.py:74 (get_state_city)
+        </td>
+        <td class="syntax">
+          <div class="flDebugSqlWrap">
+            <div class="flDebugSql">SELECT clinics.clinic_id AS clinics_clinic_id, clinics.clinic_name AS clinics_clinic_name, clinics.city AS clinics_city, clinics.state AS clinics_state, clinics.director AS clinics_director 
+FROM clinics 
+WHERE clinics.state = %(state_1)s</div>
+          </div>
+        </td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>0.4201</td>
+        <td>
+        
+          <a class="remoteCall" href="http://0.0.0.0:5000/_debug_toolbar/views/sqlalchemy/sql_select?query=.eJyLVgp29XF1DlFIzsnMy0wu1oPQ8ZkpCo7BMMF4uKAOurq8xNxULCpBwkhqM0sqURQB-QjZ4pLEEhQzwAII-ZTMotTkkvwiZCVwsZg8tyB_X5g4kBvu4RrkimqzrYKqBogRb6hZrODo54JmM0gazALJK-lUK0HUKlkpBTv6KbgFOfo5ewY7-yvpKEFVAWWcHZVqYwHgm2zd.ml3XaGxi3AMy_XgDSqF10-nzK0E&amp;duration=0.0004200935363769531">SELECT</a><br>
+          <a class="remoteCall" href="http://0.0.0.0:5000/_debug_toolbar/views/sqlalchemy/sql_explain?query=.eJyLVgp29XF1DlFIzsnMy0wu1oPQ8ZkpCo7BMMF4uKAOurq8xNxULCpBwkhqM0sqURQB-QjZ4pLEEhQzwAII-ZTMotTkkvwiZCVwsZg8tyB_X5g4kBvu4RrkimqzrYKqBogRb6hZrODo54JmM0gazALJK-lUK0HUKlkpBTv6KbgFOfo5ewY7-yvpKEFVAWWcHZVqYwHgm2zd.ml3XaGxi3AMy_XgDSqF10-nzK0E&amp;duration=0.0004200935363769531">EXPLAIN</a><br>
+        
+        </td>
+        <td title="/home/vagrant/src/Hackbright/HB project-1/server.py:86 (get_state_city)">
+                    ./server.py:86 (get_state_city)
+        </td>
+        <td class="syntax">
+          <div class="flDebugSqlWrap">
+            <div class="flDebugSql">SELECT clinics.clinic_id AS clinics_clinic_id, clinics.clinic_name AS clinics_clinic_name, clinics.city AS clinics_city, clinics.state AS clinics_state, clinics.director AS clinics_director 
+FROM clinics 
+WHERE clinics.city = %(city_1)s AND clinics.state = %(state_1)s</div>
+          </div>
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+        </div>
+      </div>
+    </div>
+    
+  
+    
+    <div id="flDebugLoggingPanel-content" class="panelContent" style="display: none;">
+      <div class="flDebugPanelTitle">
+        <a href="http://0.0.0.0:5000/get-state-city" class="flDebugClose">Close</a>
+        <h3>Log Messages</h3>
+      </div>
+      <div class="flDebugPanelContent">
+        <div class="scroll">
+          
+  <p>No messages logged.</p>
+
+
+
+        </div>
+      </div>
+    </div>
+    
+  
+    
+    <div id="flDebugRouteListPanel-content" class="panelContent" style="display: none;">
+      <div class="flDebugPanelTitle">
+        <a href="http://0.0.0.0:5000/get-state-city" class="flDebugClose">Close</a>
+        <h3>Route List</h3>
+      </div>
+      <div class="flDebugPanelContent">
+        <div class="scroll">
+          <table>
+  <thead>
+    <tr>
+      <th>URL route</th>
+      <th>Endpoint name</th>
+      <th>HTTP methods</th>
+      <th>Is alias</th>
+      <th>Redirect to</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      
+        <tr>
+          <td>/</td>
+          <td>index</td>
+          <td>GET, HEAD, OPTIONS</td>
+          <td>False</td>
+          <td>None</td>
+        </tr>
+      
+        <tr>
+          <td>/_debug_toolbar/static/&lt;path:filename&gt;</td>
+          <td>_debug_toolbar.static</td>
+          <td>GET, HEAD, OPTIONS</td>
+          <td>False</td>
+          <td>None</td>
+        </tr>
+      
+        <tr>
+          <td>/_debug_toolbar/views/sqlalchemy/sql_explain</td>
+          <td>debugtoolbar.sql_select</td>
+          <td>GET, HEAD, OPTIONS, POST</td>
+          <td>False</td>
+          <td>None</td>
+        </tr>
+      
+        <tr>
+          <td>/_debug_toolbar/views/sqlalchemy/sql_select</td>
+          <td>debugtoolbar.sql_select</td>
+          <td>GET, HEAD, OPTIONS, POST</td>
+          <td>False</td>
+          <td>None</td>
+        </tr>
+      
+        <tr>
+          <td>/_debug_toolbar/views/template/&lt;key&gt;</td>
+          <td>debugtoolbar.template_editor</td>
+          <td>GET, HEAD, OPTIONS</td>
+          <td>False</td>
+          <td>None</td>
+        </tr>
+      
+        <tr>
+          <td>/_debug_toolbar/views/template/&lt;key&gt;</td>
+          <td>debugtoolbar.template_preview</td>
+          <td>OPTIONS, POST</td>
+          <td>False</td>
+          <td>None</td>
+        </tr>
+      
+        <tr>
+          <td>/_debug_toolbar/views/template/&lt;key&gt;/save</td>
+          <td>debugtoolbar.save_template</td>
+          <td>OPTIONS, POST</td>
+          <td>False</td>
+          <td>None</td>
+        </tr>
+      
+        <tr>
+          <td>/get-state-city</td>
+          <td>get_state_city</td>
+          <td>OPTIONS, POST</td>
+          <td>False</td>
+          <td>None</td>
+        </tr>
+      
+        <tr>
+          <td>/show_services_rates/&lt;clinic_name&gt;</td>
+          <td>show_rates</td>
+          <td>GET, HEAD, OPTIONS</td>
+          <td>False</td>
+          <td>None</td>
+        </tr>
+      
+        <tr>
+          <td>/static/&lt;path:filename&gt;</td>
+          <td>static</td>
+          <td>GET, HEAD, OPTIONS</td>
+          <td>False</td>
+          <td>None</td>
+        </tr>
+      
+    
+  </tbody>
+</table>
+        </div>
+      </div>
+    </div>
+    
+  
+    
+    <div id="flDebugProfilerPanel-content" class="panelContent" style="display: none;">
+      <div class="flDebugPanelTitle">
+        <a href="http://0.0.0.0:5000/get-state-city" class="flDebugClose">Close</a>
+        <h3>Profiler not active</h3>
+      </div>
+      <div class="flDebugPanelContent">
+        <div class="scroll">
+          The profiler is not activated, activate it to use it
+        </div>
+      </div>
+    </div>
+    
+  
+  <div id="flDebugWindow" class="panelContent" style="display: none;"></div>
+</div>
+</div></div></body></html>

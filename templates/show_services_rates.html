@@ -10,17 +10,20 @@
         <td>No</td>
     {% endif %}
 {% endmacro %}
-
+<div style="margin:2rem;">
 <h1>View ART Data:</h2><br><br>
 
+
+<div class="center_text">
 <h2>{{ clinic_name }}</h2>
 <h3>{{ clinic_address }}</h3>
+</div>
 
-<div class="container-fluid">
+<div id="services_rates">
     <!-- Begin centered main text -->
       <div class="row align-items-center">
         <section class="col-6 mx-auto" id="splash">
-          <img src="/static/another ivf.jpg" class="img-fluid center-block" alt="Image of another ivf" id="another_ivf">
+          
           <p><p>
         </section>
     </div>
@@ -30,7 +33,7 @@
 
 <div class="service_table">
 <section class="col-10 mx-auto d-lg-block d-md-block d-none">
-<table class="table-responsive">
+<table>
     <tr>
         <th>Clinic Services and Profile</th>
         <td>Member of SART</td>
@@ -62,11 +65,10 @@
 </table>
 </div>
 
-
-<br>Fresh embryo:<br><br>
+<div style="height: 2rem; margin-top: 1rem; padding-left: 1rem; background-color: darkgray; color: white"> Fresh Embryo</div>
     What is the chance of having multiple live births?<br>
         Age of woman
-        <table id="fresh_mul">
+        <table id="fresh_mul" style="border:1px solid green">
             <tr>
                 <th></th>
                 <th>Less than 35</th>
@@ -87,7 +89,7 @@ Fresh embryo:<br><br>
 
 What is the chance of having a term, normal birth weight and singleton live birth?<br>
         Age of woman
-        <table id="fresh_sin">
+        <table id="fresh_sin" style="border:1px solid blue">
             <tr>
                 <th></th>
                 <th>Less than 35</th>
@@ -109,7 +111,7 @@ What is the chance of having a term, normal birth weight and singleton live birt
 Frozen embryo:<br><br>
     What is the chance of having multiple live births?<br>
         Age of woman
-        <table id="fro_mul">
+        <table id="fro_mul" style="border:1px solid purple">
             <tr>
                 <th></th>
                 <th>Less than 35</th>
@@ -308,7 +310,7 @@ $("get-chart-button").on('click', makeVisible())
 <script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfjxfPTabsjVyZPQT1zp9L1VaB9sjvwxc&callback=initMap">
 </script>
 </div>
-
+</div>
 
 
 

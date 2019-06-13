@@ -18,8 +18,6 @@
 
 {% block content %}
 
-<!-- load video as background -->
-<!-- <link rel="stylesheet" href='/templates/fullscreen_video.html'> -->
 
 <!-- div for video background -->
 <header class="align-items-center d-flex justify-content-center">
@@ -29,8 +27,8 @@
         <source src="/static/icsi.mp4" type="video/mp4">
       </video>
       <div class="container">
-        <div class="row">
-          <div class="col">
+        <div class="row align-items-center justify-content-center text-light">
+          <div class="col-6">
             <h3>Locate a Fertility Clinic</h3>
 
             <!-- Create a search bar -->
@@ -44,47 +42,7 @@
           </div>
         </div>
       </div>
-    </header>
-
-    <!-- <section class="my-5">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8 mx-auto">
-            
-            <p class="mb-0">
-              Created by <a href="https://startbootstrap.com">Start Bootstrap</a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
- -->
-
-
-
-<!-- <div class='video-header wrap'>
-    <div class='fullscreen-video-wrap'>
-            
-        <video src="/video/icsi.mp4" autoplay loop></video>
-    </div>
-               
-            
-    <div class='header-overlay'>
-        <div class='header-content'>
-            <a class="btn btn-success my-btn mt-4">Know more &gt</a>
-        </div>
-    </div>
-</div>
-<section class="section section-a">
-    <div class="container">
-        <h1>Thank you for watching </h1>
-        <p>Lorem</p>
-    </div>
-</section> -->
-
-    
-    
-            
+    </header> 
 
          
     <!--The div element for autocomplete search bar -->
@@ -110,9 +68,7 @@
 
     <script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1y8atwwt1qwp5VH6k-Wm1Xwqkuw3IgxM&libraries=places&callback=initAutocomplete"></script>
 
-    <!-- <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1y8atwwt1qwp5VH6k-Wm1Xwqkuw3IgxM&callback=initMap">
-    </script> -->
+  
     
 
 {% endblock %}

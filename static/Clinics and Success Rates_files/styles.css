@@ -1,0 +1,60 @@
+.clinicChart {
+    height: 400px;
+    width: 400px;
+}
+
+.clinicCharts {
+    /*visibility: hidden;*/
+}
+
+.img-fluid { max-width: 100%; and height: auto;}
+
+.container-fluid {
+  background: url("background.jpg") no-repeat center center;
+  background-size: cover;
+}
+
+/*.table-responsive{-sm|-md|-lg|-xl}*/
+
+#clinic_links {
+  
+  font-size: x-large;
+  color: dark-blue;
+}
+
+video {
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+}
+
+header {
+    position: relative;
+    background: #4a4a4a6b;
+    overflow-y: hidden;
+    height: 556px;
+}
+
+header .container .row {
+    padding: 3rem;
+}
+
+.text-center {
+  text-align: center;
+  display: inline-block;
+}
+
+#center-text {
+  text-align: center;
+  display: inline-block;
+}
+
+#table_list td {
+
+}
+#services_rate {
+  background: none;
+}
+
+
+
