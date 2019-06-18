@@ -37,7 +37,7 @@ Create your database tables:
 ```
 $ python3 model.py
 ```
-Seeding database
+Seed database
 ```
 $ python3 seed.py
 ```
