@@ -1,7 +1,13 @@
 {% extends 'base.html' %}
 
+{% block head %}
+<title>Show ART Data</title>
+{% endblock %}
 
 {% block content %}
+
+
+<div class="container-fluid">
 
 {% macro create_service_td(has_service) %}
     {% if has_service == "Yes" %}
@@ -11,16 +17,14 @@
     {% endif %}
 {% endmacro %}
 
-
-<div style="margin:2rem;">
-<h2>View ART Data:</h2><br><br>
+<h2 style="padding: 2rem; margin-left: 7rem; font-weight: bold">View ART Data:</h2><br><br>
 
 
 <div class="container"> 
     <div class="row allign-items-center">
         <div class="col">
-            <h3>{{ clinic_name }}</h2>
-            <h5>{{ clinic_address }}</h3>
+            <h3 style="font-weight: bold">{{ clinic_name }}</h2>
+            <h5 style="font-weight: bold">{{ clinic_address }}</h3>
         </div>
         
         <div class="col">
@@ -30,7 +34,9 @@
 </div>
 
 <div class="container">
+    <div class="treatment-type-fresh">
     Clinic Services and Profile
+    </div>
     <div class="row allign-items-center">
         <div class="col-6 col-md-4">
             <ul>
@@ -62,12 +68,14 @@
 </div>
     
 
-
-<div class="treatment-type-fresh"> Fresh Embryo</div>
+<div class="container">
+<div class="treatment-type-fresh"> Fresh Embryo Transfers</div>
     <div class="rate-table">
-    What is the chance of having multiple live births?<br>
+        <div class="mul_single_births">
+        What is the chance of having multiple live births?
+        </div>
         
-        <table class="table table-bordered" id="fresh_mul">
+        <table class="table table-bordered table-hover" id="fresh_mul">
             <tr class="thead-dark">
                 <th>Age of Woman</th>
                 <th><35</th>
@@ -86,9 +94,12 @@
     </div>
     <div class="rate-table">
 
-    What is the chance of having a term, normal birth weight and singleton live birth?<br>
+        <div class="mul_single_births">
+
+        What is the chance of having a term, normal birth weight and singleton live birth?
+        </div>
         
-        <table class="table table-bordered" id="fresh_sin">
+        <table class="table table-bordered table-hover" id="fresh_sin">
             <tr class="thead-dark">
                 <th>Age of Woman</th>
                 <th><35</th>
@@ -106,19 +117,21 @@
         </table>
     </div>
 
- 
-    <div class="clinicChart" >
+    <div class="clinic_chart">
         <canvas id="barChartFresh"></canvas>
     </div>
 </div>
+</div>
 
-
-<div class="treatment-type-frozen"> Frozen Embryo</div>
+<div class="container">
+<div class="treatment-type-frozen"> Frozen Embryo Transfers</div>
     <div class="rate-table">
+        <div class="mul_single_births">
 
-    What is the chance of having multiple live births?<br>
+        What is the chance of having multiple live births?
+        </div>
         
-        <table class="table table-bordered" id="fro_mul">
+        <table class="table table-bordered table-hover" id="fro_mul">
             <tr class="thead-dark">
                 <th>Age of Woman</th>
                 <th><35</th>
@@ -136,11 +149,14 @@
             </tr>
         </table>
     </div>
-    <div class="rate-table">
 
-    What is the chance of having a term, normal birth weight and singleton live birth?<br>
+    <div class="rate-table">
+        <div class="mul_single_births">
+
+        What is the chance of having a term, normal birth weight and singleton live birth?
+        </div>
       
-        <table class="table table-bordered" id="fro_sin">
+        <table class="table table-bordered table-hover" id="fro_sin">
             <tr class="thead-dark">
                 <th>Age of Woman</th>
                 <th><35</th>
@@ -157,13 +173,16 @@
             </tr>
         </table>
     </div>
-
-    <div class="clinicChart">
+        <div class="clinic_chart">
+       
         <canvas id="barChartFrozen"></canvas>
-    </div>
+        
+        </div>
 </div>
 
+</div>
 
+</div>
 
 
 <script>
@@ -172,57 +191,64 @@
     let ctx_bar_fresh = $("#barChartFresh").get(0).getContext("2d");
     let data = {{ rate_dict |safe }};
     console.log(data)
-
     let stackedBarFresh = new Chart(ctx_bar_fresh, {
         type: 'bar',
         data: {
             labels: ['<35', '35-37', '38-40', '>40'],
             datasets: [
                 {
-                    label: 'Percentage of fresh embryo resulting in multiple live biths', 
+                    label: 'Percentage of fresh embryo transfers resulting in multiple live biths', 
                     data: [ data['fresh_mul_1'] ,  data['fresh_mul_2'] , data['fresh_mul_3'] , data['fresh_mul_4'] ],
-
-                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    backgroundColor: "#0000ff",
                                     
-                    borderColor: 'rgba(255, 99, 132, 1)',
+                    
             
                     borderWidth: 1           
                 },
-
                 {
-                    label: 'Percentage of fresh embryo resulting in singleton live births', 
+                    label: 'Percentage of fresh embryo transfers resulting in singleton live births', 
                     data: [data['fresh_sin_1'], data['fresh_sin_2'], data['fresh_sin_3'], data['fresh_sin_4']],
-                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
+                    backgroundColor: "#ff0000",
+                    
                     borderWidth: 1    
                 }
-
             ],
         },
         options: {
             responsive: true,
+            legend: {
+                labels: {
+
+                    fontColor: "black",
+                    fontSize: 12
+                }
+            },
+            
             scales: {
                 xAxes: [{
                     // stacked: true
+                    ticks: {
+                        fontColor: "black",
+                        fontSize: 12
+                    },
                     type: 'category',
                     labels: ['Less than 35', '35-37', '38-40', '>40']
                 }],
                 yAxes: [{
                     ticks: {
                         suggestedMin: 10,
-                        suggestedMax: 100
+                        suggestedMax: 100,
+                        fontColor: "black",
+                        fontSize: 12
+                        
                     }
                 }]
             }
         }
         
     });
-
-
-
     // Create bar chart for different age groups of women whose treatments are based on frozen embryo
     let ctx_bar_frozen = $("#barChartFrozen").get(0).getContext("2d");
-
     let stackedBarFrozen = new Chart(ctx_bar_frozen, {
         type: 'bar',
         connectNullData: true,
@@ -230,57 +256,65 @@
             labels: ['<35', '35-37', '38-40', '>40'],
             datasets: [
                 {
-                    label: 'Percentage of frozen embryo resulting in multiple live biths', 
+                    label: 'Percentage of frozen embryo transfers resulting in multiple live biths', 
                     data: [data['fro_mul_1'], data['fro_mul_2'],  data['fro_mul_3'] , data['fro_mul_4']],
-                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                                    
-                    borderColor: 'rgba(255, 99, 132, 1)',
+                    backgroundColor: "#0000ff",
             
                     borderWidth: 1           
                 },
-
                 {
-                    label: 'Percentage of frozen embryo resulting in singleton live births', 
+                    label: 'Percentage of frozen embryo transfers resulting in singleton live births', 
                     data: [ data['fro_sin_1'] , data['fro_sin_2'] ,  data['fro_sin_3'] , data['fro_sin_4'] ],
-                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
+                    backgroundColor: "#ff0000",
+                   
                     borderWidth: 1    
                 }
-
             ],
         },
         options: {
             responsive: true,
+            legend: {
+                labels: {
+
+                    fontColor: "black",
+                    fontSize: 12
+                }
+            },
+            
             scales: {
                 xAxes: [{
                     // stacked: true
+                    ticks: {
+                        fontColor: "black",
+                        fontSize: 12
+                    },
                     type: 'category',
                     labels: ['Less than 35', '35-37', '38-40', '>40']
+
+
                 }],
                 yAxes: [{
                     ticks: {
                         suggestedMin: 10,
-                        suggestedMax: 100
+                        suggestedMax: 100,
+                        fontColor: "black",
+                        fontSize: 12
+                        
                     }
                 }]
             }
         }
     });
-
-
 </script>
 
 
 <script>
-
     let marker;
-
     function initMap() {
         let map = new google.maps.Map(document.getElementById('clinic_map'), {
             zoom: 15,
             center: {lat: {{ latitude }}, lng: {{ longitude }}}
         });
-
         marker = new google.maps.Marker({
             map: map,
             animation: google.maps.Animation.DROP,
@@ -288,7 +322,6 @@
         });
         marker.addListener('click', toggleBounce);
     }
-
     function toggleBounce() {
         if (marker.getAnimation() !== null) {
             marker.setAnimation(null);
@@ -306,6 +339,7 @@
 </div>
 
 </div>
+</div>
 
 
 
@@ -315,5 +349,3 @@
 
 
     
-
-

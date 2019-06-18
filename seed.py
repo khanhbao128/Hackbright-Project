@@ -13,7 +13,8 @@ import csv
 def convert_to_float(str):
     try: 
         if "/" in str:
-            return float(Fraction("".join(str.split(" "))))*100
+            return round(float(Fraction("".join(str.split(" "))))*100,1)
+            
         else:
             return float(str)
 

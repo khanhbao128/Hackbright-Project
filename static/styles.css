@@ -1,30 +1,47 @@
-.clinicChart {
-    height: 400px;
-    width: 400px;
+.clinic_chart {
+    height: 300px;
+    width: 600px;
+    font-color: black;
+    font-weight: 800;
+    margin: 5rem 2rem 5rem 0;
 }
 
-.clinicCharts {
-    /*visibility: hidden;*/
-}
+
 
 .img-fluid { max-width: 100%; and height: auto;}
 
 .container-fluid {
-  background: url("final_bk.jpg") no-repeat center center;
+  background: url(embryo.png) no-repeat center center;
   background-size: cover;
-  color: white;
+  font-weight: bold;
+  color: black;
+}
+
+.thead-dark {
+  color: #9888A5;
+
+}
+
+.container {
+  font-weight: bold;
 }
 
 /*.table-responsive{-sm|-md|-lg|-xl}*/
 
-#clinic_links {
-  
-  font-size: x-large;
-  color: dark-blue;
+.treatment-type-fresh, .treatment-type-frozen {
+  margin: 4rem 2rem 2rem 0;
+  border: 1px solid black;
+  background: black; 
+  width: 25%; 
+  color: white;
+}
+.col-6 col-md-4 {
+  padding: 2rem;
 }
 
-
-
+.mul_single_births {
+  margin: 3rem 3rem 3rem 0;
+}
 video {
     width: 100%;
     position: absolute;
@@ -38,19 +55,25 @@ header {
     height: 556px;
 }
 
-header .container .row {
-    padding: 3rem;
+header {
+    padding: 2rem;
 }
 
 #autocomplete-location {
   width: 10rem;
+  font-weight: 800;
 }
 
 a {
 
   font-weight: bold;
+  font-size: 22px;
+  color: darkblue;
 }
 
+.footer {
+  position: fixed;
+}
 #home {
   color: white;
 
@@ -58,16 +81,6 @@ a {
 
 .service_table {
   border: 1px solid red;
-}
-
-
-.treatment-type-fresh, .treatment-type-frozen {
-  margin: 2px; 
-  border: 1px solid black;
-  background: blue; 
-  width: 15%; 
-  color: white;
-  padding: 4px;
 }
 
 
@@ -84,6 +97,9 @@ a {
 }
 
 
-
+#footer {
+  height: 20px;
+  background: transparent; /*Same as body, you could also use transparent */
+}
 
 

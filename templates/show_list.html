@@ -1,8 +1,12 @@
 {% extends 'base.html' %}
 
+{% block head %}
+<title>List of clinics</title>
+{% endblock %}
+
 {% block content %}
 
-<div id="show_list">
+
 <!-- It's container-fluid so it spans the entire page. -->
   <div class="container-fluid">
     <!-- Begin centered main text -->
@@ -14,7 +18,7 @@
 <!-- Table -->
 
     <div class="text-center" style="text-align: center; display: inline-block; color: white; padding: 5rem; margin: auto 5rem auto 5rem">
-    <h4>FERTILITY CLINICS IN {{ user_city }}, {{ user_state }}</h4> 
+    <h4 style="color: black"><b>FERTILITY CLINICS IN {{ user_city }}, {{ user_state }}<b></h4> 
     </div>
 
 
@@ -49,29 +53,22 @@
 <!-- div element for map and markers -->
 
 </div>
-
+</div>
 
     
 
 <script>
-
     const geo_locations = {{ geo_locations| safe }};
-
     function initMap() {
-
         const center_marker = {lat: geo_locations['lat'][0], lng: geo_locations['lng'][0]};
-
         const map = new google.maps.Map(document.getElementById('map_with_markers'), {
             zoom: 12,
             disableDoubleClickZoom: true,
             center: center_marker
         });
-
         make_markers(map);
     }
-
     function make_markers(map) {
-
         const geo_locations = {{ geo_locations| safe }};
         const geo_lat = geo_locations['lat'] ;
         console.log(geo_lat);
@@ -86,12 +83,9 @@
                 animation: google.maps.Animation.DROP,
                 position: LatLng
             });
-
             marker.addListener('click', toggleBounce);
-
         }
     }
-
     function toggleBounce() {
         if (marker.getAnimation() !== null) {
             marker.setAnimation(null);
@@ -99,7 +93,6 @@
             marker.setAnimation(google.maps.Animation.BOUNCE);
         }
     }
-
 </script>
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfjxfPTabsjVyZPQT1zp9L1VaB9sjvwxc&callback=initMap">

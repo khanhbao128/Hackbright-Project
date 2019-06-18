@@ -39,9 +39,6 @@ def make_API_call(clinic_name, clinic_city):
     
     print(inputs)
    
-
-    # key = "AIzaSyDfjxfPTabsjVyZPQT1zp9L1VaB9sjvwxc"
-
     url = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=" + inputs + "&inputtype=textquery&fields=formatted_address,geometry&key=AIzaSyDfjxfPTabsjVyZPQT1zp9L1VaB9sjvwxc"
 
     response = requests.get(url)
@@ -67,63 +64,69 @@ def get_state_city():
 
     location = location.split(",")
 
-    user_city = location[0].upper()
+    if location == [] or len(location) < 3:
 
-    user_state = location[1].lstrip()
+        flash("Please enter name of a city and pick the city and state from the dropdown menu")
 
-    state_clinics = Clinic.query.filter_by(state=user_state).all()
+        return redirect("/")
 
-
-    all_cities = []
-
-    for clinic in state_clinics:
-
-        all_cities.append(clinic.city)
-
-    #not all cities have fertility clinics so need to use state input to have a list of all cities that exist in database 
-    if user_city in all_cities:
-
-        user_clinics = Clinic.query.filter((Clinic.city==user_city) & (Clinic.state==user_state)).all()
-    
-        clinic_names = []
-
-        for user_clinic in user_clinics:
-            # create the list of clinic names in the state input
-            clinic_names.append(user_clinic.clinic_name) 
-
-                # user_clinic_json = json.dumps(user_clinics)
-        # create a dictionary and convert it to json so that JS can use the data
-        # user_inputs = {'clinic_names': clinic_names, 'user_city': user_city, 'user_state': user_state}
-        # user_inputs = json.dumps(user_inputs)
-
-
-        geo_locations = {}
-
-        longitude = []
-        
-        latitude = []
-
-        for clinic_name in clinic_names:
-
-            geo_location = make_API_call(clinic_name, user_city)
-
-            longitude.append(geo_location['lng'])
-
-            latitude.append(geo_location['lat'])
-
-
-        geo_locations['lng'] = longitude
-
-        geo_locations['lat'] = latitude
-        
-
-        geo_locations = json.dumps(geo_locations)
-
-       
-        return render_template('show_list.html', user_clinics=user_clinics, geo_locations=geo_locations, user_city=user_city, user_state=user_state)
     else:
+        
+        user_city = location[0].upper()
 
-        return redirect('/')
+        user_state = location[1].lstrip()
+
+        state_clinics = Clinic.query.filter_by(state=user_state).all()
+
+
+        all_cities = []
+
+        for clinic in state_clinics:
+
+            all_cities.append(clinic.city)
+
+        #not all cities have fertility clinics so need to use state input to have a list of all cities that exist in database 
+        if user_city in all_cities:
+
+            user_clinics = Clinic.query.filter((Clinic.city==user_city) & (Clinic.state==user_state)).all()
+        
+            clinic_names = []
+
+            for user_clinic in user_clinics:
+                # create the list of clinic names in the state input
+                clinic_names.append(user_clinic.clinic_name)
+
+
+            geo_locations = {}
+
+            longitude = []
+            
+            latitude = []
+
+            for clinic_name in clinic_names:
+
+                geo_location = make_API_call(clinic_name, user_city)
+
+                longitude.append(geo_location['lng'])
+
+                latitude.append(geo_location['lat'])
+
+
+            geo_locations['lng'] = longitude
+
+            geo_locations['lat'] = latitude
+            
+
+            geo_locations = json.dumps(geo_locations)
+
+           
+            return render_template('show_list.html', user_clinics=user_clinics, geo_locations=geo_locations, user_city=user_city, user_state=user_state)
+       
+        else:
+
+            flash("Sorry there are no clinics found in this city.")
+
+            return redirect('/')
 
 
 @app.route('/show_services_rates/<clinic_name>')
@@ -148,9 +151,6 @@ def show_rates(clinic_name):
     
     print(inputs)
    
-
-    # key = "AIzaSyDfjxfPTabsjVyZPQT1zp9L1VaB9sjvwxc"
-
     url = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=" + inputs + "&inputtype=textquery&fields=formatted_address,geometry&key=AIzaSyDfjxfPTabsjVyZPQT1zp9L1VaB9sjvwxc"
 
     response = requests.get(url)
@@ -220,23 +220,6 @@ def show_rates(clinic_name):
         flash("Sorry, no information about this clinic found.")
         redirect('/get-state-city')
 
-
-# @app.route('show_charts')
-# def show_charts():
-
-#     return render_template('show_charts.html')
-
-
-
-# @app.route('/get_full_address')
-# def get_addresss():
-    """Provide a full address for each clinic using Places API"""
-
-
-
-
-
-    
                                         
 
 if __name__ == "__main__":

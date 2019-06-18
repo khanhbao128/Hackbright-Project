@@ -1,5 +1,4 @@
 <!doctype html>
-<html>
 <head>
     <title>Clinics and Success Rates</title>
     <link rel="stylesheet" type="text/css" href="static/map.css">
@@ -16,13 +15,15 @@
 
     <!-- Load our stylesheet -->
     <link rel="stylesheet" href="/static/styles.css">
+    {% block head %}
+    {% endblock %}
+</head>
 
 <body>
-
 <!-- create navbar for each page -->
 <nav style="background-color: #3C5B4D;" class="navbar navbar-expand-lg my-nav">
 
-<a id="home" class="navbar-brand" href="/"><i>ART Guidelines</i> Home</a>
+<a id="home" class="navbar-brand" href="/"><i>ART Guidelines Home<i></a>
 
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -30,31 +31,36 @@
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-            <a class="nav-link" href="https://www.asrm.org/news-and-publications/news-and-research/">News</a>
+            <a class="nav-link" href="https://www.asrm.org/news-and-publications/news-and-research/"><i>News<i></a>
         </li>
+        
+
     </ul>
 </div>
 
 </nav>
 
+    
 
-  
-  
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        <ul class=flashes>
-        {% for message in messages %}
-            <li>{{ message }}</li>
-        {% endfor %}
-        </ul>
-        {% endif %}
-    {% endwith %}
-    {% block content %}Content Here
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-info" role="alert">
+                {{message}}
+        </div>
+    {% endfor %}
+
+    {% block content %}CONTENT HERE
     {% endblock %}
+    
+<footer class="page-footer font-small" style="background: #3C5B4D">
 
-    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
-    <script crossorigin src="https://unpkg.com/babel-standalone@6.26.0/babel.js" type='text/jsx'></script>
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">Thank you for visiting ART Guidelines!
+   
+  </div>
+  <!-- Copyright -->
+
+</footer>
+    
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 

@@ -10,8 +10,9 @@
 .img-fluid { max-width: 100%; and height: auto;}
 
 .container-fluid {
-  background: url("background.jpg") no-repeat center center;
+  background: url("final_bk.jpg") no-repeat center center;
   background-size: cover;
+  color: white;
 }
 
 /*.table-responsive{-sm|-md|-lg|-xl}*/
@@ -21,6 +22,8 @@
   font-size: x-large;
   color: dark-blue;
 }
+
+
 
 video {
     width: 100%;
@@ -39,22 +42,48 @@ header .container .row {
     padding: 3rem;
 }
 
-.text-center {
+#autocomplete-location {
+  width: 10rem;
+}
+
+a {
+
+  font-weight: bold;
+}
+
+#home {
+  color: white;
+
+}
+
+.service_table {
+  border: 1px solid red;
+}
+
+
+.treatment-type-fresh, .treatment-type-frozen {
+  margin: 2px; 
+  border: 1px solid black;
+  background: blue; 
+  width: 15%; 
+  color: white;
+  padding: 4px;
+}
+
+
+
+
+#center_text {
   text-align: center;
   display: inline-block;
 }
 
-#center-text {
-  text-align: center;
-  display: inline-block;
-}
 
-#table_list td {
-
-}
 #services_rate {
   background: none;
 }
+
+
 
 
 

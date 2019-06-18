@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 
 
-{% block title %}
+{% block head %}
+  <title>Homepage</title>
+
 
     <style>
       /* Set the size of the div element that contains the map */
@@ -17,6 +19,7 @@
 
 
 {% block content %}
+<div class="container-fluid">
 
 
 <!-- div for video background -->
@@ -27,46 +30,51 @@
         <source src="/static/icsi_1.mp4" type="video/mp4">
       </video>
       <div class="container">
-        <div class="row align-items-center justify-content-center text-light">
-          <div class="col-4"></div>
-          <div class="col-4"></div>
+        <div class="row align-items-center text-light">
           <div class="col-4">
-            <h3>Locate a Fertility Clinic</h3>
+            <div>
+            <h3 style="font-size: x-large; font-weight: 800">Locate a Fertility Clinic</h3>
+            </div>
+          <div>
 
             <!-- Create a search bar -->
-            <form id='user_input_form' action='/get-state-city' method='POST'>
+            <!-- <form id='user_input_form' action='/get-state-city' method='POST'> -->
             <p>Select a city and a state below to locate fertility clinics near you.</p>
             <p>Learn about the services they provide, the types of patients they see, and their success rates.</p>
+          </div>
+          <div class="col-4"></div>
+          <div class="col-4"></div>  
+          <form id='user_input_form' action='/get-state-city' method='POST'>
             
             Location:
-                <input type="text" id="autocomplete-location" name='location'/>
-                <input type='submit' id='go' value="Search"><br><br>
+                <input type="text" id="autocomplete-location" name='location'>
+                <input type='submit' id='go' value="Search">
+           
             </form>
+            
           </div>
-
+          
         </div>
       </div>
     </header> 
+</div>
 
          
     <!--The div element for autocomplete search bar -->
     
 
     <script>
-
         function initAutocomplete() {
             
             const autocomplete1 = new google.maps.places.Autocomplete(
                 document.getElementById('autocomplete-location'),
                 { types: [ '(cities)' ] }
             );
-
             google.maps.event.addListener(autocomplete1, 'place_changed', function(){
                 var place = autocomplete1.getPlace();
                 
             })
         }
-
                 
     </script>
 
