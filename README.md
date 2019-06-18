@@ -11,17 +11,17 @@ API: Google Maps API, Places API
 
 Demo
 Users can search for list of all fertility clinics in a particular city 
-![](READMEgifs/homepage.gif)
+![](homepage_1.gif)
 
 
 Once the list appears, users can click on each clinic's name to view its data. The locations of all clinics are also displayed on a map.
 
-![](READMEgifs/show_list.gif)
+![](show_list_1.gif)
 
 
 Users can see full address of a particular clinic and its location on a map. They can also see clinic profile, services it is providing, and success rates, which are divided into groups based on patient age groups, types of embryo transfers, and outcomes. The data are displayed in the form of both tables and charts.
 
-![](READMEgifs/show_rates.gif)
+![](show_rates_1.gif)
 
 
 The most exciting feature of this app is the ability to provide data that users can rely on since the data come from the most current Center for Disease Control and Prevention's fertility rate report.
