@@ -59,7 +59,7 @@ Users can search for list of all fertility clinics in a particular city
 
 Once the list appears, users can click on each clinic's name to view its data. The locations of all clinics are also displayed on a map.
 
-![](show_list_1.gif)
+![2019-06-19 10 55 32](https://user-images.githubusercontent.com/46436967/59788545-ccbe3f00-9280-11e9-8d24-427f89e844ce.gif)
 
 
 Users can see full address of a particular clinic and its location on a map. They can also see clinic profile, services it is providing, and success rates, which are divided into groups based on patient age groups, types of embryo transfers, and outcomes. The data are displayed in the form of both tables and charts.
