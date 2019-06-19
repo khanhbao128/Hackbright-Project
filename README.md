@@ -66,10 +66,11 @@ Once the list appears, users can click on each clinic's name to view its data. T
 
 Users can see full address of a particular clinic and its location on a map. They can also see clinic profile, services it is providing, and success rates, which are divided into groups based on patient age groups, types of embryo transfers, and outcomes. The data are displayed in the form of both tables and charts.
 
-![](show_rates_1.gif)
+![2019-06-19 10 59 29](https://user-images.githubusercontent.com/46436967/59788813-67b71900-9281-11e9-965e-2dfac2f1dc26.gif)
 
 
-The most exciting feature of this app is the ability to provide data that users can rely on since the data come from the most current Center for Disease Control and Prevention's fertility rate report.
+
+The most exciting feature of this app is the ability to provide data that users can rely on since the data come from the most current Center for Disease Control and Prevention's fertility rate report. These data are stored in PostgreSQL database which is connected to a Flask application using SQLAlchemy. User inputs are then used to query success rates and also to make API calls to Places API to display each clinic's location.
 
 
 
