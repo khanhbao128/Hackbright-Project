@@ -55,7 +55,7 @@ Open localhost:5000 on browser.
 
 Demo
 Users can search for list of all fertility clinics in a particular city 
-![](homepage_1.gif)
+[2019-06-18 23.48.02.gif.zip](https://github.com/khanhbao128/Hackbright-Project/files/3304761/2019-06-18.23.48.02.gif.zip)
 
 
 Once the list appears, users can click on each clinic's name to view its data. The locations of all clinics are also displayed on a map.
